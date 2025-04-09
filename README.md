@@ -48,7 +48,7 @@ classDiagram
     }
 ```
 
-[![wakatime](https://wakatime.com/badge/github/Outoine15/projet_web_info204_TCL.svg)](https://wakatime.com/badge/github/Outoine15/projet_web_info204_TCL)
+[![wakatime](https://wakatime.com/badge/github/Outoine15/CollectArt.svg)](https://wakatime.com/badge/github/Outoine15/CollectArt)
 
 ### auteurs (groupe 5):
 Titouan, Ludovic, Christer, Nathan
