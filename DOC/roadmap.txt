@@ -1,0 +1,9 @@
+-afficher un json en image sur un tableau
+-convertir json en image (png)
+-votes
+-admin/user (connexion pas créer un compte)
+-noir et blanc / Hex code
+====== proof of concept =====
+
+-edit solo des map: prend et envoie sur le serveur sans se posser de question des autres utilisateurs
+-edit mulit des map: prend en compte les modification éventuelles par les autres utilisateurs pendant une autre modification (merging)
