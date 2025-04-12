@@ -1,5 +1,0 @@
-# Log sur toute les actions faites par tout le monde dans le projet.
-# Forme :
-Nom / Date => Action
-# Exemple :
-Ludovic / 1/1/2048 => avoir fait un meme sur les chaise du bat 4a
