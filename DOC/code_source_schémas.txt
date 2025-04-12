@@ -18,6 +18,7 @@ classDiagram
     class TOILE{
         ID 'int' AI 11
         NAME 'char' 16
+        DESCRIPTION 'char' 200
         ID_CREATOR 'int' 11
     }
     class TOILE_TAGS{

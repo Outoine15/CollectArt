@@ -27,6 +27,7 @@ classDiagram
     class TOILE{
         ID 'int' AI 11
         NAME 'char' 16
+        DESCRIPTION 'char' 200
         ID_CREATOR 'int' 11
     }
     class TOILE_TAGS{
@@ -49,6 +50,7 @@ classDiagram
         ID_TOILE 'int' 11
         IMG_FILE 'chr' 100
     }
+
 ```
 
 [![wakatime](https://wakatime.com/badge/github/Outoine15/CollectArt.svg)](https://wakatime.com/badge/github/Outoine15/CollectArt)
