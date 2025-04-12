@@ -17,8 +17,12 @@
 <header>
 </header>
 
+<table>
+	<tr>
+		<td id="0-2" style="background-color:#FFFFFF"></td>
+	</tr>
+</table>
 
-  
 
 <!-- Footer -->
 <footer>

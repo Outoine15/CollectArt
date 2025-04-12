@@ -11,7 +11,7 @@ classDiagram
     USER --|> TOILE
     TOILE --|> TOILE_DEFIS
     TOILE --|> TOILE_NOTES
-    TOILE --|> TOILE_TAG
+    TOILE --|> TOILE_TAGS
     TOILE --|> TOILE_PARTICIPANTS
     USER --|> TOILE_PARTICIPANTS
     class ADMIN{
@@ -29,15 +29,18 @@ classDiagram
         NAME 'char' 16
         ID_CREATOR 'int' 11
     }
-    class TOILE_TAG{
+    class TOILE_TAGS{
+        ID 'int' 11
         ID_TOILE 'int' 11
         TAG 'chr' 16
     }
-        class TOILE_PARTICIPANTS{
+    class TOILE_PARTICIPANTS{
+        ID 'int' 11
         ID_TOILE 'int' 11
         ID_USER 'int' 11
     }
     class TOILE_NOTES{
+        ID 'int' 11
         ID_TOILE 'int' 11
         ID_USER 'int' 11
         NOTE 'int'
@@ -50,7 +53,8 @@ classDiagram
 
 [![wakatime](https://wakatime.com/badge/github/Outoine15/CollectArt.svg)](https://wakatime.com/badge/github/Outoine15/CollectArt)
 
-### auteurs (groupe 5):
+## auteurs (groupe 5):
+
 Titouan, Ludovic, Christer, Nathan
 
 L1 MISPI, 2024-2025
