@@ -31,5 +31,3 @@
 	/** Disconnect the Db ---------------*/
 	include("DBconnect/db_disconnect.php") ;
 ?>
-
-<!-- test -->
