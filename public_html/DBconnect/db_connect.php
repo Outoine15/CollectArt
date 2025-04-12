@@ -4,7 +4,7 @@ ini_set('display_errors', '1');
 
 // include("db_params.php") ; 
 
-$env = parse_ini_file(".env");
+$env = parse_ini_file("/home/grp5/public_html/.env");
 $USER = $env["ID"];
 $PASS = $env["MDP"];
 $HOST = $env["HOST"];
