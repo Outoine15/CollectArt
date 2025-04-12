@@ -1,0 +1,9 @@
+thème sombre:
+F6F1F1
+19A7CE
+146C94
+
+thème claire:
+537FE7
+C0EEF2
+E9F8F9
