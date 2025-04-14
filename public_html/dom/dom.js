@@ -372,17 +372,12 @@ function affiche_json(json_data){
 
 // load_json();
 function load_json_data(){
-    const request_pos = "../TOILESjson/testmap.json";
-    const request = new Request(request_pos);
+    fetch("../toilesJSON/testmap.json").then(json_to_data).then(edit_toile_json).then(update_zone_dessin);
+}
 
-    // fetch(request_pos).then((response) => {response.json()}).then((json_data) => {edit_toile_json(json_data)});
-    json_data = '[["#FFFFFF","#eb4034","#FFFFFF"],["#FFFFFF","#eb4034","#eb4034"]]';
-    json_parsed = JSON.parse(json_data);
-    edit_toile_json(json_parsed);
-    update_zone_dessin();
-    // const json_data = await response.json();
-    // await json_data.then(edit_toile_json(json_data));
-    // affiche_json(json_data);
+// Convertit le contenu en json
+function json_to_data(rep){
+	return rep.json();
 }
 
 function edit_toile_json(json_data){
@@ -395,3 +390,4 @@ function edit_toile_json(json_data){
         
     }
 }
+
