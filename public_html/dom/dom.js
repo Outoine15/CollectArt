@@ -9,9 +9,11 @@
 // 1. FONCTIONS PRINCIPALES 
 // ============================
 
+// 
 // Fonction appelée au chargement de la page
-function load_toile(){
+function make_toile(){
     // Création de la toile
+
     toile = create_toile();
     document.body.appendChild(toile);
 
@@ -304,29 +306,47 @@ function reset_dessin(){
 
 function affiche_json(json_data){
     console.log(json_data);
-    let table = document.createElement("table");
+    // let table = document.createElement("table");
     for (let x in json_data) {
-        let td = document.createElement("td");
+        // let td = document.createElement("td");
         for (let y in json_data[x]) {
             let data = json_data[x][y];
-            let tr = document.createElement("tr");
-            let text = document.createTextNode(data);
+            // let tr = document.createElement("tr");
+            // let text = document.createTextNode(data);
+            if(toile_status.pixelData[x][y]!=[]){
+                toile_status.pixelData[x][y]=data;
+            }
             console.log(x);
             console.log(y);
-            tr.appendChild(text);
-            td.appendChild(tr);
+            // tr.appendChild(text);
+            // td.appendChild(tr);
         }
-        table.appendChild(td);
+        // table.appendChild(td);
     }
-    document.body.appendChild(table);
+    // document.body.appendChild(table);
 }
 
 // load_json();
-async function load_json(){
-    const request_pos = "../sources/map/testmap.json";
+function load_json_data(){
+    const request_pos = "../TOILESjson/testmap.json";
     const request = new Request(request_pos);
 
-    const response = await fetch(request);
-    const json_data = await response.json();
-    affiche_json(json_data);
+    // fetch(request_pos).then((response) => {response.json()}).then((json_data) => {edit_toile_json(json_data)});
+    json_data = '[["#FFFFFF","#eb4034","#FFFFFF"],["#FFFFFF","#eb4034","#eb4034"]]';
+    edit_toile_json(json_data);
+    // TODO update de la toile
+    // const json_data = await response.json();
+    // await json_data.then(edit_toile_json(json_data));
+    // affiche_json(json_data);
+}
+
+function edit_toile_json(json_data){
+    for (let hauteur = 0; hauteur < json_data.length; hauteur++) {
+        const ligne = json_data[hauteur];
+        for (let largeur = 0; largeur < ligne.length; largeur++) {
+            let pixel_data = json_data[hauteur][largeur];
+            fill_pixel_data(hauteur,largeur,pixel_data);
+        }
+        
+    }
 }
