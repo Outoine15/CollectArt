@@ -1,0 +1,36 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+footer {
+    background-color: #1550bd;
+    color: rgba(188, 207, 214, 0.925);
+    position:fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+
+#nav-f {
+    display: flex;
+    justify-content:center;
+    padding: 50px 25px;
+    position: fixed;
+    
+
+}
+
+.nav-footer-buttons a {
+    color: rgb(23, 123, 180);
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 8px 16px;
+    background-color: #ffffffc0;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.nav-footer-buttons a:hover {
+    background-color: #777;
+}

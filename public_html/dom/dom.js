@@ -25,7 +25,7 @@ function create_toile(){
     toile.className = "toile";
 
     // Création de la zone de dessin
-    var pixel_toile = create_pixel_toile(toile_status["size"]);
+    var pixel_toile = create_pixel_toile(toile_status["hauteur"],toile_status["largeur"]);
     var palette = create_palette();
 
     toile.appendChild(pixel_toile);
@@ -39,17 +39,17 @@ function create_toile(){
 // ============================
 
 // Création de la zone de dessin
-function create_pixel_toile(size){
+function create_pixel_toile(hauteur,largeur){
     var pixel_toile = document.createElement("div");
     pixel_toile.className = "pixel_toile";
 
     var table = document.createElement("table");
     table.className = "table_pixel";
 
-    for(let i = 0; i < size; i++){
+    for(let i = 0; i < hauteur; i++){
         let tr = document.createElement("tr");
 
-        for(let j = 0; j < size; j++){
+        for(let j = 0; j < largeur; j++){
             let td = document.createElement("td");
             td.className = i;
             td.id = j;
@@ -285,8 +285,9 @@ function change_color(e){
 
 // Réinitialise le dessin
 function reset_dessin(){
-    var tds = document.querySelectorAll(".table_pixel td");
-    var size = toile_status["size"];
+    let tds = document.querySelectorAll(".table_pixel td");
+    const hauteur = toile_status["hauteur"];
+    const largeur = toile_status["largeur"];
     
     // Remet les cases en blanches
     for(let td of tds){
@@ -294,8 +295,8 @@ function reset_dessin(){
     }
 
     // Réinitialise pixelData de toile_status
-    for(let i = 0; i < size; i++){
-        for(let j = 0; j < size; j++){
+    for(let i = 0; i < hauteur; i++){
+        for(let j = 0; j < largeur; j++){
             fill_pixel_data(i, j, "#ffffff")
         }
     }

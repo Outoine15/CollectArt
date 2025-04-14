@@ -15,7 +15,8 @@ if(isset($_POST["nom"]) && isset($_POST["hauteur"]) && isset($_POST["largeur"]))
     $hauteur=$_POST["hauteur"];
     $largeur=$_POST["largeur"];
     echo "var toile_status = {
-            'size': $hauteur,
+            'hauteur': $hauteur,
+            'largeur':$largeur,
             'color' : '#000000',
             'pixelData' : [],
             isDrawing : false
