@@ -372,7 +372,11 @@ function affiche_json(json_data){
 
 // load_json();
 function load_json_data(){
-    fetch("../toilesJSON/testmap.json").then(json_to_data).then(edit_toile_json).then(update_zone_dessin);
+    fetch("json_name.php")
+        .then(fetch("../toilesJSON/testmap.json")
+            .then(json_to_data)
+            .then(edit_toile_json)
+            .then(update_zone_dessin));
 }
 
 // Convertit le contenu en json
