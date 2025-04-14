@@ -2,7 +2,7 @@
 /*---------------------------------------
 CRUD: Gestion de l'entité toile
 ---------------------------------------*/
-$debug = true;
+$debug = false;
 
 /*
 	CR: créé un nouvel enregistrement  
@@ -51,13 +51,14 @@ function select_toiles($conn){
 }
 
 function select_toile($conn, $id){
-	$sql="SELECT * FROM 'toile' WHERE 'id'=$id";
-	global $debeug;
-	if($debeug) echo $sql;
-	$res=mysqli_query($conn, $sql);
-	print_r($res);
-	return rs_to_tab_toile($res)[0];
+	$sql="SELECT * FROM `toile` WHERE `id`=$id";
+	global $debug;
+	if($debug){echo $sql;}
+	$res = mysqli_query($conn, $sql);
+	$tab = rs_to_tab_toile($res);
+	return $tab[0];
 }
+
 /**
  * Fonction auxiliaire pour transformer un rs en tableau
  */
