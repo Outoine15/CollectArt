@@ -53,7 +53,7 @@ classDiagram
 
 ```
 
-[![wakatime](https://wakatime.com/badge/github/Outoine15/CollectArt.svg)](https://wakatime.com/badge/github/Outoine15/CollectArt)
+[![wakatime](https://wakatime.com/badge/github/Outoine15/CollectArt.svg)](https://wakatime.com/badge/github/Outoine15/CollectArt) *4
 
 ## auteurs (groupe 5):
 
