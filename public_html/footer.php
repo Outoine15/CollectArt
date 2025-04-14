@@ -1,24 +1,22 @@
 <?php
-echo '
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Mon Site</title>
-    <link rel="stylesheet" href="footer.css"> 
-</head>
+//$target="";
+//$link="image/Logo_USMB_web_vertical_grand_RVB.png";
+echo "
+<style>
+footer {
+  display: flex;
+  justify-content: center;
 
-<body>
+  padding: 5px;
+  background-color: #45a1ff;
+  color: #fff;
 
-<footer>
-    <nav id="nav-f">
-        <div class="nav-footer-buttons">
-            <a href="connexion.php">re-connexion</a>
-            <a href="main.php">un problème?</a>
-            <a href="voter.php">vous voulez voter?</a>
-        </div>
-        <image id="image-univsmb" style="" src="image/Logo_USMB_web_vertical_grand_RVB.png"></image>
-    </nav>
-</footer>
-</body>';
+}
+
+</style>
+  <footer>
+    <p>orgen</p>
+	<image src=\"image/Logo_USMB_web_vertical_grand_RVB.png\"></image>
+  </footer>
+";
 ?>
