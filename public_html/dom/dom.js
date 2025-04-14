@@ -69,6 +69,18 @@ function create_pixel_toile(hauteur,largeur){
     return pixel_toile;
 }
 
+// Mise à jour de la zone de dessin
+function update_zone_dessin(){
+    var table = document.querySelector(".table_pixel");
+    
+    // Supprime le contenu de la table (tous les tr/td)
+    delete_childs(table);
+
+
+    // Remplit à nouveau le contenu de la table (remet les tr/td)
+    refill_zone_dessin(table);
+}  
+
 // Création de la palette de couleurs
 function create_palette(){
     var palette = document.createElement("div");
@@ -187,6 +199,7 @@ function fill_pixel_data(i, j, color){
 
     // Rajoute la couleur à la case i, j
     pixel_data[i][j] = color;
+    
 }
 
 // Insert un input color dans un élément passé en paramètre
@@ -304,6 +317,37 @@ function reset_dessin(){
     }
 }
 
+// Supprime tous les enfants d'un élément
+function delete_childs(div){
+    while(div.firstChild){
+        div.removeChild(div.firstChild);
+    }
+}
+
+// Remet les tr et td dans la table
+function refill_zone_dessin(table){
+    for(let i = 0; i < toile_status["hauteur"]; i++){
+        let tr = document.createElement("tr");
+
+        for(let j = 0; j < toile_status["largeur"]; j++){
+            let td = document.createElement("td");
+            td.className = i;
+            td.id = j;
+
+            pixel_data = toile_status["pixelData"];
+            // Rajoute la couleur blanche à la case i, j
+            fill_pixel_data(i, j, pixel_data[i][j]);
+            
+            // Mise à jour de la couleur de la case
+            td.style.backgroundColor = pixel_data[i][j];
+
+            tr.appendChild(td);
+        }
+
+        table.appendChild(tr);
+    }
+}
+
 function affiche_json(json_data){
     console.log(json_data);
     // let table = document.createElement("table");
@@ -333,8 +377,9 @@ function load_json_data(){
 
     // fetch(request_pos).then((response) => {response.json()}).then((json_data) => {edit_toile_json(json_data)});
     json_data = '[["#FFFFFF","#eb4034","#FFFFFF"],["#FFFFFF","#eb4034","#eb4034"]]';
-    edit_toile_json(json_data);
-    // TODO update de la toile
+    json_parsed = JSON.parse(json_data);
+    edit_toile_json(json_parsed);
+    update_zone_dessin();
     // const json_data = await response.json();
     // await json_data.then(edit_toile_json(json_data));
     // affiche_json(json_data);
