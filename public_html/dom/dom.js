@@ -372,7 +372,7 @@ function affiche_json(json_data){
 
 // load_json();
 function load_json_data(){
-    fetch("json_name.php")
+    fetch("json_name.php?id=2")
         .then(fetch("../toilesJSON/testmap.json")
             .then(json_to_data)
             .then(edit_toile_json)
