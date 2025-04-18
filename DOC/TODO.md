@@ -1,3 +1,0 @@
-- utiliser id_user dans table_votes (voir les user qui ont voté pour quoi)
-- parramètres
-    - photo profill

@@ -2,14 +2,12 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>CollectArt</title>
+    <title>Document</title>
 </head>
 <body>
-<?php
-include("header.php");
-?>
-<?php
-include("footer.php");
-?>    
+    
 </body>
 </html>
+<?php
+
+?>

@@ -1,19 +1,17 @@
-// const toile_status = {
-//     "size" : 30, // TODO : Adapter en fonction de la taille choisie à la création
-//     "color" : "#000000",
-//     "pixelData" : [],
-//     "isDrawing" : false
-// };
+const toile_status = {
+    "size" : 30, // TODO : Adapter en fonction de la taille choisie à la création
+    "color" : "#000000",
+    "pixelData" : [],
+    "isDrawing" : false
+};
 
 // ============================
 // 1. FONCTIONS PRINCIPALES 
 // ============================
 
-// 
 // Fonction appelée au chargement de la page
-function make_toile(){
+function load_toile(){
     // Création de la toile
-
     toile = create_toile();
     document.body.appendChild(toile);
 
@@ -27,7 +25,7 @@ function create_toile(){
     toile.className = "toile";
 
     // Création de la zone de dessin
-    var pixel_toile = create_pixel_toile(toile_status["hauteur"],toile_status["largeur"]);
+    var pixel_toile = create_pixel_toile(toile_status["size"]);
     var palette = create_palette();
 
     toile.appendChild(pixel_toile);
@@ -41,17 +39,17 @@ function create_toile(){
 // ============================
 
 // Création de la zone de dessin
-function create_pixel_toile(hauteur,largeur){
+function create_pixel_toile(size){
     var pixel_toile = document.createElement("div");
     pixel_toile.className = "pixel_toile";
 
     var table = document.createElement("table");
     table.className = "table_pixel";
 
-    for(let i = 0; i < hauteur; i++){
+    for(let i = 0; i < size; i++){
         let tr = document.createElement("tr");
 
-        for(let j = 0; j < largeur; j++){
+        for(let j = 0; j < size; j++){
             let td = document.createElement("td");
             td.className = i;
             td.id = j;
@@ -68,18 +66,6 @@ function create_pixel_toile(hauteur,largeur){
     pixel_toile.appendChild(table);
     return pixel_toile;
 }
-
-// Mise à jour de la zone de dessin
-function update_zone_dessin(){
-    var table = document.querySelector(".table_pixel");
-    
-    // Supprime le contenu de la table (tous les tr/td)
-    delete_childs(table);
-
-
-    // Remplit à nouveau le contenu de la table (remet les tr/td)
-    refill_zone_dessin(table);
-}  
 
 // Création de la palette de couleurs
 function create_palette(){
@@ -199,7 +185,6 @@ function fill_pixel_data(i, j, color){
 
     // Rajoute la couleur à la case i, j
     pixel_data[i][j] = color;
-    
 }
 
 // Insert un input color dans un élément passé en paramètre
@@ -300,9 +285,8 @@ function change_color(e){
 
 // Réinitialise le dessin
 function reset_dessin(){
-    let tds = document.querySelectorAll(".table_pixel td");
-    const hauteur = toile_status["hauteur"];
-    const largeur = toile_status["largeur"];
+    var tds = document.querySelectorAll(".table_pixel td");
+    var size = toile_status["size"];
     
     // Remet les cases en blanches
     for(let td of tds){
@@ -310,88 +294,9 @@ function reset_dessin(){
     }
 
     // Réinitialise pixelData de toile_status
-    for(let i = 0; i < hauteur; i++){
-        for(let j = 0; j < largeur; j++){
+    for(let i = 0; i < size; i++){
+        for(let j = 0; j < size; j++){
             fill_pixel_data(i, j, "#ffffff")
         }
     }
 }
-
-// Supprime tous les enfants d'un élément
-function delete_childs(div){
-    while(div.firstChild){
-        div.removeChild(div.firstChild);
-    }
-}
-
-// Remet les tr et td dans la table
-function refill_zone_dessin(table){
-    for(let i = 0; i < toile_status["hauteur"]; i++){
-        let tr = document.createElement("tr");
-
-        for(let j = 0; j < toile_status["largeur"]; j++){
-            let td = document.createElement("td");
-            td.className = i;
-            td.id = j;
-
-            pixel_data = toile_status["pixelData"];
-            // Rajoute la couleur blanche à la case i, j
-            fill_pixel_data(i, j, pixel_data[i][j]);
-            
-            // Mise à jour de la couleur de la case
-            td.style.backgroundColor = pixel_data[i][j];
-
-            tr.appendChild(td);
-        }
-
-        table.appendChild(tr);
-    }
-}
-
-function affiche_json(json_data){
-    console.log(json_data);
-    // let table = document.createElement("table");
-    for (let x in json_data) {
-        // let td = document.createElement("td");
-        for (let y in json_data[x]) {
-            let data = json_data[x][y];
-            // let tr = document.createElement("tr");
-            // let text = document.createTextNode(data);
-            if(toile_status.pixelData[x][y]!=[]){
-                toile_status.pixelData[x][y]=data;
-            }
-            console.log(x);
-            console.log(y);
-            // tr.appendChild(text);
-            // td.appendChild(tr);
-        }
-        // table.appendChild(td);
-    }
-    // document.body.appendChild(table);
-}
-
-// load_json();
-function load_json_data(){
-    fetch("json_name.php?id=2")
-        .then(fetch("../toilesJSON/testmap.json")
-            .then(json_to_data)
-            .then(edit_toile_json)
-            .then(update_zone_dessin));
-}
-
-// Convertit le contenu en json
-function json_to_data(rep){
-	return rep.json();
-}
-
-function edit_toile_json(json_data){
-    for (let hauteur = 0; hauteur < json_data.length; hauteur++) {
-        const ligne = json_data[hauteur];
-        for (let largeur = 0; largeur < ligne.length; largeur++) {
-            let pixel_data = json_data[hauteur][largeur];
-            fill_pixel_data(hauteur,largeur,pixel_data);
-        }
-        
-    }
-}
-

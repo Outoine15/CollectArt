@@ -1,0 +1,5 @@
+- utiliser id_user dans table_votes (voir les user qui ont voté pour quoi)
+- parramètres
+    - photo profill
+- sauvegarde
+    - setup un pixel data edited (uniquement les modifiaction de la session sont dedans, le reste est vide (pas base color car sinon on peut pas mettre de cette couleur dans le tableau))
