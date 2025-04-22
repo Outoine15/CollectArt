@@ -6,7 +6,7 @@
 </head>
 <body>
 <?php
-include("header.php");
+include("header_index.php");
 ?>
 <?php
 include("footer.php");
