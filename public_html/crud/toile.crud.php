@@ -15,6 +15,13 @@ function insert_toile($conn, $name, $description, $id_creator){
 	$ret=mysqli_query($conn, $sql);
 	return $ret; 	
 }
+function get_last_inserted_id($conn){
+	$sql="SELECT `id` FROM `toile` WHERE ID=(SELECT MAX(ID) FROM `toile`)";
+	global $debug;
+	if($debug){echo $sql;} 
+	$ret=mysqli_query($conn, $sql);
+	return rs_to_tab_toile($ret)[0]['id'];
+}
 
 /*
 	U: met à jour les valeurs de l'enregistrement 
@@ -57,6 +64,14 @@ function select_toile($conn, $id){
 	$res = mysqli_query($conn, $sql);
 	$tab = rs_to_tab_toile($res);
 	return $tab[0];
+}
+
+function select_toile_name($conn,$id){
+	$sql="SELECT 'name' FROM 'toile' WHERE 'id'=$id";
+	global $debug;
+	if($debug){echo $sql;}
+	$res = mysqli_query($conn, $sql);
+	return $res;
 }
 
 /**
