@@ -28,14 +28,27 @@ include("../DBconnect/db_disconnect.php");
 	<head>
 	<meta charset="UTF-8">
 	</head>
-
+	<link rel="stylesheet" href="connUser.css">
 	<body>
+	<?php
+	include("../header.php");?>
+	
+	<div id="formulaire">
 <form method="POST" action="connUser.php">
-	Nom d'utilisateur :	<input type="text" name="login">
-	Mot de passe :	<input type="text" name="passwd">
-		<input type="submit">
+	<p>Nom d'utilisateur</p>
+	<input type="text" name="login">
+	<p>Mot de passe</p>
+	
+	<div><input type="text" name="passwd">
+		<input type="submit"></div>
 	</form>
 	<a href="CreerCompte_form.php">Créer un compte</a>
+	</div>
+	<?php
+	include("../footer.php");?>
 	</body>
 </html>
 </html>
+
+
+
