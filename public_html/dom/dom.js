@@ -379,6 +379,32 @@ function load_json_data(id){
             .then(update_zone_dessin));
 }
 
+// envoie le json à php pour sauvegarde:
+function send_json_data(id){
+// ya rien qui marche ici:
+    // let xhr = new XMLHttpRequest();
+    // let url = "json.save.php";
+
+    // // open a connection
+    // xhr.open("POST", url, true);
+
+    // // Set the request header i.e. which type of content you are sending
+    // xhr.setRequestHeader("Content-Type", "application/json");
+
+    // // Converting JSON data to string
+    // var data = JSON.stringify(toile_status["pixelData"]);
+    // data="["+data+[",id="+id+"]"];
+    // console.log(data);
+
+    // // Sending data with the request
+    // xhr.send(data);
+
+    // je comprend pas pourquoi ça marche pas: (il faut un anti-fetch / un 1/fetch)
+    var toile_status;
+    console.log(toile_status);
+    fetch("json.save.php?data="+toile_status+"&path="+id+".json");
+}
+
 // Convertit le contenu en json
 function json_to_data(rep){
 	return rep.json();
