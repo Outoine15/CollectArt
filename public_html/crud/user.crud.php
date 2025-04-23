@@ -61,6 +61,26 @@ function rs_to_tab_user($rs){
 	return $tab;
 }
 
+/**
+	* Fonction de vérification si user et pwd sont dans bdd
+*/
+
+function is_in_DB($Nom , $Password , $conn){
+	$is_in=0;
+	$result = mysqli_query($conn,"SELECT * FROM user");
+	while ($row = mysqli_fetch_assoc($result)){
+		$NomBDD=$row['name'];
+		$PasswordBDD=$row['pwd'];
+		
+		if ($Nom == $NomBDD && $Password==$PasswordBDD){
+		$is_in=1;}
+	}
+	return $is_in ;
+}
+
+
+
+
 
 ?>
 
