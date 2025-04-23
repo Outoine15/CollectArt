@@ -1,9 +1,14 @@
-// const toile_status = {
-//     "size" : 30, // TODO : Adapter en fonction de la taille choisie à la création
-//     "color" : "#000000",
-//     "pixelData" : [],
-//     "isDrawing" : false
-// };
+// format toile_status:
+// var toile_status = {
+//     'nom': '$nom',
+//     'toile_id': $id,
+//     'hauteur': $hauteur,
+//     'largeur': $largeur,
+//     'color' : '#000000',
+//     'pixelData' : [],
+//     isDrawing : false
+//     };
+
 
 // ============================
 // 1. FONCTIONS PRINCIPALES 
@@ -380,29 +385,24 @@ function load_json_data(id){
 }
 
 // envoie le json à php pour sauvegarde:
-function send_json_data(id){
-// ya rien qui marche ici:
-    // let xhr = new XMLHttpRequest();
-    // let url = "json.save.php";
+function send_json_data_for_save(){
 
-    // // open a connection
-    // xhr.open("POST", url, true);
+    let xhr = new XMLHttpRequest();
+    let url = "../dom/json.save.php";
+
+    xhr.open("POST", url);
 
     // // Set the request header i.e. which type of content you are sending
-    // xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.setRequestHeader("Content-Type", "application/json");
 
     // // Converting JSON data to string
-    // var data = JSON.stringify(toile_status["pixelData"]);
-    // data="["+data+[",id="+id+"]"];
-    // console.log(data);
+    var data = JSON.stringify(toile_status["pixelData"]);
+    id=toile_status["toile_id"];
+    data="["+data+[","+id+"]"];
+    console.log(data);
 
     // // Sending data with the request
-    // xhr.send(data);
-
-    // je comprend pas pourquoi ça marche pas: (il faut un anti-fetch / un 1/fetch)
-    var toile_status;
-    console.log(toile_status);
-    fetch("json.save.php?data="+toile_status+"&path="+id+".json");
+    xhr.send(data);
 }
 
 // Convertit le contenu en json
@@ -416,8 +416,7 @@ function edit_toile_json(json_data){
         for (let largeur = 0; largeur < ligne.length; largeur++) {
             let pixel_data = json_data[hauteur][largeur];
             fill_pixel_data(hauteur,largeur,pixel_data);
-        }
-        
+        }       
     }
 }
 

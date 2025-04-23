@@ -8,7 +8,7 @@
     <title>toile</title>
 </head>
 <body>
-<button id="save" type="button" name="save">sauvegarder</button>
+<button id="save" type="button" name="save" onclick="send_json_data_for_save()">sauvegarder</button>
 
 <?php
 
@@ -42,8 +42,6 @@ if(isset($_POST["nom"]) && isset($_POST["hauteur"]) && isset($_POST["largeur"]) 
             echo "make_toile();\n";
                 echo "load_json_data($id);";
         }
-        echo "button=document.getElementById('save');";
-        echo "button.addEventListener('click',send_json_data($id));";
 echo "</script>";
 ?>
 </html>
