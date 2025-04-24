@@ -78,8 +78,20 @@ function is_in_DB($Nom , $Password , $conn){
 	return $is_in ;
 }
 
-
-
+/**
+ 	* Fonction de vérification si un user est déja utilisé 
+ */
+function pseudo_existe($conn, $Nom){
+	$existe=0;
+	$result = mysqli_query($conn,"SELECT * FROM user WHERE name = '$Nom'");
+	while ($row = mysqli_fetch_assoc($result)){
+		$NomBD=$row['name'];
+		
+		if ($Nom == $NomBD ){
+		$existe=1;}
+	}
+	return $existe ;
+}
 
 
 ?>
