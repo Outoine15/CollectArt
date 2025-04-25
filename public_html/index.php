@@ -18,7 +18,7 @@ echo "<script>";
 echo "var list_toiles = ${toiles};\n";
 echo "affiche_list_toiles()";
 echo "</script>";
-// include("footer.php");
+include("footer.php");
 
 include("DBconnect/db_disconnect.php");
 ?>    
