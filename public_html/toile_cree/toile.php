@@ -40,7 +40,7 @@ if(isset($_POST["nom"]) && isset($_POST["hauteur"]) && isset($_POST["largeur"]) 
             isDrawing : false
             };";
             echo "make_toile();\n";
-                echo "load_json_data($id);";
+            echo "load_json_data($id);";
         }
 echo "</script>";
 ?>
