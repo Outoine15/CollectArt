@@ -15,6 +15,7 @@ ini_set('display_errors', '1');
 
 include("../DBconnect/db_connect.php");
 include("../crud/toile.crud.php");
+// ça marche si ya beaucoup de data dans la db json on dirait donc poser pas trop de questions
 if(isset($_GET["id"]) && isset($_GET["name"]) && isset($_GET["hauteur"]) && isset($_GET["largeur"])){
     $id=$_GET["id"];
     $nom=$_GET["name"];
