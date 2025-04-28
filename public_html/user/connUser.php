@@ -21,14 +21,11 @@ include("../DBconnect/db_disconnect.php");
 
 
 
-
-
-
 <html>
 	<head>
 	<meta charset="UTF-8">
 	</head>
-	<link rel="stylesheet" href="connUser.css">
+		<link rel="stylesheet" href="connUser.css">
 	<body>
 	<?php
 	include("../header.php");?>
@@ -42,10 +39,24 @@ include("../DBconnect/db_disconnect.php");
 	<div><input type="text" name="passwd">
 		<input type="submit"></div>
 	</form>
-	<a href="CreerCompte_form.php">Créer un compte</a>
+	<a href="creeUser.php">Créer un compte</a>
 	</div>
 	<?php
 	include("../footer.php");?>
+	</body>
+	 
+<footer>
+      
+	  <div id="div_droits">  
+	  <p>@ Tout droit r&#233;serv&#233; &#224; Bob_et_Alice</p>
+	  <p>Les cookies c'est pas mauvais</p>
+	  </div>
+
+      <a href="https://www.univ-smb.fr/" id="div-image-univsmb"><image id="image-univsmb" src="../images/Logo_USMB_web_vertical_grand_RVB.png"></image></a>
+
+
+</footer>
+
 	</body>
 </html>
 </html>

@@ -3,3 +3,32 @@
 	flex-direction:column;
 	align-items:center;
 }
+
+footer {
+	margin:0px;
+	padding:0px;
+    background-color: #537FE7;
+    color: rgba(188, 207, 214, 0.925);
+    position:fixed;
+    bottom: 0;
+	width : 100%;
+	height: 10%;
+	padding-bottom:2%;
+	padding-top:1%;}
+
+#div-image-univsmb{
+position: absolute;
+	top:0;
+	right:0;
+}	
+	
+#image-univsmb{
+	height:9%;	
+	
+}
+
+#div_droits{
+	display:flex;
+	flex-direction:column;
+	justify-content: center;
+	text-align:center;}
