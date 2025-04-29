@@ -1,10 +1,10 @@
 base de données:
-```
+```mermaid
 classDiagram
     USER --|> TOILE
     TOILE --|> TOILE_DEFIS
     TOILE --|> TOILE_NOTES
-    TOILE --|> TOILE_TAG
+    TOILE --|> TOILE_TAGS
     TOILE --|> TOILE_PARTICIPANTS
     USER --|> TOILE_PARTICIPANTS
     class ADMIN{
@@ -20,18 +20,19 @@ classDiagram
     class TOILE{
         ID 'int' AI 11
         NAME 'char' 16
+        DESCRIPTION 'char' 200
         ID_CREATOR 'int' 11
     }
-    class TOILE_TAG{
-        ID_TOILE 'int' 11
+    class TOILE_TAGS{
+        ID 'int' 11
         TAG 'chr' 16
     }
-        class TOILE_PARTICIPANTS{
-        ID_TOILE 'int' 11
+    class TOILE_PARTICIPANTS{
+        ID 'int' 11
         ID_USER 'int' 11
     }
     class TOILE_NOTES{
-        ID_TOILE 'int' 11
+        ID 'int' 11
         ID_USER 'int' 11
         NOTE 'int'
     }

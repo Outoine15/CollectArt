@@ -25,4 +25,4 @@ Les toiles en mode défis permettent de s'ammuser à immiter des images si l'on 
 - pas de chat textuels
 
 ## lien du github:
-> https://github.com/Outoine15/projet_web_info204_TCL
+> https://github.com/Outoine15/CollectArt
