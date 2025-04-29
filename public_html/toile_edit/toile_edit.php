@@ -1,26 +1,31 @@
-<?php
-include("../headerfooter/header.php");
-?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="../dom/dom.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/toile.css">
+    <link rel="stylesheet" href="../css/default.css">
     <title>Document</title>
 </head>
 <body>
-<button id="save" type="button" name="save" onclick="send_json_data_for_save()">sauvegarder</button>
+<?php
+include("../headerfooter/header.php");
+?>
 
 <!-- <filesMatch ".php">
     Header set Cache-Control "max-age=84600, public"
 </filesMatch> -->
+
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
 include("../DBconnect/db_connect.php");
 include("../crud/toile.crud.php");
+
+$html = "<div id='container'>";
+
 // ça marche si ya beaucoup de data dans la db json on dirait donc poser pas trop de questions
 if(isset($_GET["id"]) && isset($_GET["name"]) && isset($_GET["hauteur"]) && isset($_GET["largeur"])){
     $id=$_GET["id"];
@@ -45,6 +50,16 @@ if(isset($_GET["id"]) && isset($_GET["name"]) && isset($_GET["hauteur"]) && isse
             echo "console.log(toile_status);\n";
     echo "</script>\n";
 }
+
+$html .= "</div>";
+echo $html;
+
+?>
+
+</div>
+
+<?php
+include("../headerfooter/footer.php");
 ?>
 </body>
 </html>
