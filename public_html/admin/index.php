@@ -17,5 +17,6 @@ if (isset($_SESSION["id"])) {
 </head>
 <body>
     <a href="deconnAdmin.php">déconnexion</a>
+    <!-- TODO:finis this -->
 </body>
 </html>
