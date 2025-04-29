@@ -143,7 +143,20 @@ function createDisplayToile(toile) {
 
 // Fonction pour charger les données JSON d'une toile
 function loadToileData(id) {
-    return fetch("../toilesJSON/" + id + ".json").then(jsonToData);
+    let toileData = [];
+    // console.log("searched id="+id);
+    for (const i in listToiles) {
+        const toile = listToiles[i];
+        if(toile["id"]==id){
+            toileData=toile;
+            // console.log(toileData);
+        }
+    }
+    console.log(toileData);
+    return toileData;
+
+    // just ça ca marche: (DO NOT TOUCH IT)
+    // return fetch("../toilesJSON/" + id + ".json").then(jsonToData);
 }
 
 // Convertit le contenu en json
@@ -160,17 +173,17 @@ function deleteChilds(div) {
 
 // Chargement asynchrone des données des toiles
 function loadToileDataAsync(id, hauteur, largeur) {
-    loadToileData(id).then(pixelData => {
-        // Mise à jour de mini toile
-        var previewElement = document.getElementById('preview-' + id);
+    let pixelData = loadToileData(id)
+    // Mise à jour de mini toile
+    var previewElement = document.getElementById('preview-' + id);
 
-        if (previewElement) {
-            // Supprimer old mini toile
-            deleteChilds(previewElement);
+    if (previewElement) {
+        // Supprimer old mini toile
+        deleteChilds(previewElement);
 
-            // Ajouter mini toile mise à jour
-            var miniToile = createMiniToile(pixelData, hauteur, largeur);
-            previewElement.appendChild(miniToile);
+        // Ajouter mini toile mise à jour
+        console.log(pixelData);
+        var miniToile = createMiniToile(pixelData, hauteur, largeur);
+        previewElement.appendChild(miniToile);
         }
-    });
 }
