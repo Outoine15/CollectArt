@@ -1,11 +1,1 @@
 ErrorDocument 404 https://l1.dptinfo-usmb.fr/~grp5/lib/page404.php
-
-<Files toile_edit.php>
-FileETag None
-<IfModule mod_headers.c>
-Header unset ETag
-Header set Cache-Control "store, no-cache, must-revalidate, post-check=0, pre-check=0"
-Header set Pragma "no-cache"
-Header set Expires "Sun, 19 Nov 1978 05:00:00 GMT"
-</IfModule>
-</Files>

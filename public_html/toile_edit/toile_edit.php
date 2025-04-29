@@ -1,11 +1,10 @@
 <?php
-header("cache-control: no-cache, max-age=1");
+include("../headerfooter/header.php");
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <script src="../dom/dom.js"></script>
     <link rel="stylesheet" href="style.css">
     <title>Document</title>

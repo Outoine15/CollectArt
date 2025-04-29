@@ -7,16 +7,21 @@
     <link rel="stylesheet" href="../css/page404.css">
     <title>page 404</title>
     <link href="https://fonts.cdnfonts.com/css/bizarre" rel="stylesheet">
+    <script src="../script/page404.js"></script>
 </head>
-<body>
+<body onload="visualiseRandomBackground()">
 <?php
 include("../headerfooter/header.php");
-?>    
+?>
+
 <div id="container">
-    <p>OUPS , il y a une ereur. (404)</p>
-    <strong><a>Oups, la page que vous shouaitez consulter n'existe pas...</a></strong> 
-    <strong><a>bah alors on sait pas quel chemin on prend ? </a></strong>
+    <div id="text-container">
+        <p>OUPS , il y a une ereur. (404)</p>
+        <p>Oups, la page que vous shouaitez consulter n'existe pas...</p>
+        <p>bah alors on sait pas quel chemin on prend ?</p>
+    </div>
 </div> 
+
 <?php
 include("../headerfooter/footer.php");
 ?>    
