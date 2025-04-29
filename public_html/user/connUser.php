@@ -9,10 +9,16 @@ include("../crud/user.crud.php");
 include("../DBconnect/db_connect.php");
 
 
-if(isset($_POST["login"])){
-	$estdansBDD = is_in_DB($_POST["login"] , $_POST["passwd"] , $conn);
-	if($estdansBDD=='1'){
-		header("Location: rien.php");
+
+if(isset($_POST["login"]) && isset($_POST["passwd"])){
+	$session_data = is_in_DB_get_id($_POST["login"] , $_POST["passwd"] , $conn);
+    print_r($session_data);
+    $estdansBDD = $session_data[0];
+    $id = $session_data[1];
+	if($estdansBDD==1){
+        echo "hello there";
+        $_SESSION["id"]=$id;
+        
 	}
 }
 
