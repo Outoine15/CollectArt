@@ -50,7 +50,6 @@ classDiagram
         ID_TOILE 'int' 11
         IMG_FILE 'chr' 100
     }
-
 ```
 
 ## auteurs (groupe 5):
