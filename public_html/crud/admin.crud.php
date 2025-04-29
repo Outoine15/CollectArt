@@ -2,7 +2,9 @@
 /*---------------------------------------
 CRUD: Gestion de l'entité admin
 ---------------------------------------*/
-$debug = false;
+$debug = true;
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
 
 /*
 	CR: créé un nouvel enregistrement  
@@ -48,6 +50,25 @@ function select_admin($conn){
 	if($debeug) echo $sql; 
 	$res=mysqli_query($conn, $sql); 
 	return rs_to_tab_admin($res);
+}
+
+/*
+is in DB all:
+*/
+function is_in_DB_get_id($Nom , $Password , $conn){
+	$is_in=0;
+	$id=0;
+	$result = mysqli_query($conn,"SELECT * FROM `admin`");
+	while ($row = mysqli_fetch_assoc($result)){
+		$NomBDD=$row['name'];
+		$PasswordBDD=$row['pwd'];
+		
+		if ($Nom == $NomBDD && $Password==$PasswordBDD){
+		$is_in=1;
+		$id=$row["id"];
+		}
+	}
+	return [$is_in,$id] ;
 }
 
 /**

@@ -21,7 +21,7 @@ include("../crud/toile.crud.php");
 
 <?php
 $toiles=select_toiles($conn);
-print_r($toiles);
+// print_r($toiles);
 for ($i=0; $i < count($toiles); $i++) { 
     $id=$toiles[$i]["id"];
     $toileJSONdata = file_get_contents("../toilesJSON/$id.json");
@@ -30,7 +30,7 @@ for ($i=0; $i < count($toiles); $i++) {
 }
 
 $toiles=json_encode($toiles);
-print_r($toiles);
+// print_r($toiles);
 echo "<script>";
 echo "var listToiles = ${toiles};\n";
 echo "var listMyToiles = [];\n";
