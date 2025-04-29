@@ -1,0 +1,133 @@
+:root {
+    /* Taille des pixels de dessin */
+    --pixel_dessin_size: 20px; /* Potentiellement adapter en js en fonction de la taille de la toile */
+
+    --palette_bg_color: #ffffff;
+    --color_active: #2c3e50;
+
+    --palette_button_txt_color: #ffffff;
+    --button_reset_toile: #e74c3c;
+    --button_reset_toile_hover: #d6402f;
+    --button_save_toile: #25dd62;
+    --button_save_toile_hover: #1ec455c7;
+}
+
+/* 
+=================================
+============= TOILE =============
+=================================
+*/
+
+.toile {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+/* 
+==========================
+TOILE : Zone de dessin
+==========================
+*/
+
+.pixel_toile {
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 1px #000000;
+    background-color: white;
+}
+
+.pixel_toile table {
+    border-collapse: collapse;
+}
+
+.pixel_toile td {
+    border: 1px solid #eee;
+    background-color: white;
+    cursor: pointer;
+
+    /* Taille des pixels de dessin */
+    width: var(--pixel_dessin_size);
+    height: var(--pixel_dessin_size);
+}
+
+/* 
+==========================
+TOILE : Palette
+==========================
+*/
+
+.palette {
+    background-color: var(--palette_bg_color);;
+    border-radius: 5px;
+    box-shadow: 0px 0px 3px #ddd;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5em;
+    min-width: 200px;
+    max-width: 250px;
+    padding: 1em;
+}
+
+.colors_container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.colors_container p {
+    margin: 0.5em 0;
+    font-weight: 700;
+}
+
+.default_color {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    margin-top: 0.5em;
+}
+
+.select_color, .select_color_active {
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+}
+
+.select_color_active {
+    border-color: var(--color_active);
+}
+
+.container_palette_buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.palette_button {
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 4px;
+    color: var(--palette_button_txt_color);
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 700;
+}
+
+#button_reset_toile {
+    background-color: var(--button_reset_toile);
+}
+
+#button_reset_toile:hover {
+    background-color: var(--button_reset_toile_hover);
+}
+
+#button_save_toile {
+    background-color: var(--button_save_toile);
+}
+
+#button_save_toile:hover {
+    background-color: var(--button_save_toile_hover);
+}
+

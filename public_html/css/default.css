@@ -1,3 +1,5 @@
+
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -8,30 +10,42 @@ body {
 
 header {
     background-color: #1550bd;
-    color: rgba(188, 207, 214, 0.925);
+    color: rgba(255, 255, 255, 0.925);
+    padding: 0;
+    margin:0;
 }
 
 nav {
+    font-size: larger;
+    justify-content: space-between;
     display: flex;
-    flex:1;
-    padding: 25px 25px;
-    
+    padding: 25px;
+    align-items: center;
 }
 
-.nav-header-buttons a {
-    align-items: center;
-    color: rgb(23, 123, 180);
+.nav-title a{
+    transition: background-color 0.3s;
     text-decoration: none;
-    margin:  10px;
-    padding: 35px 7px;
+    align-items: center;
+    color: whitesmoke;
+    
+}
+.nav-header-buttons a {
+    left: 10px;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    margin:  0;
+    padding: 54px 20px;
     background-color: #1550bd;
     border: none;
     transition: background-color 0.3s;
 }
 
-.connection{
-    right: 10px;
-    color: rgb(60, 123, 180);
+.connection a{
+    right: 5px;
+    align-items: center;
+    color: white;
     text-decoration: none;
     margin:  10px;
     padding: 30px 7px;
@@ -40,10 +54,12 @@ nav {
     transition: background-color 0.3s;
 }
 
-.nav-header-buttons a:hover {
-    background-color: #191970;
+nav a:hover {
+    background-color: #2020ff;
 }
-
+.nav-title a:hover{
+    background-color: #1818ca;
+}
 #container{
     flex: 1;
 }
@@ -59,9 +75,9 @@ footer {
 	justify-content: space-between;
 }
 
-#div-image-univsmb{
+/* #div-image-univsmb{
 
-}	
+}	 */
 	
 #image-univsmb{
 	height:9%;	
