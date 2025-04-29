@@ -5,13 +5,13 @@ echo '
 <nav>
 
 <div class="nav-title">
-    <a href="../index.php"><h1>CollectArt</h1></a>
+    <h1><a href="../index.php">CollectArt</a></h1>
 </div>
 
 <div class="nav-header-buttons">
-<a href="../autre.php">autre</a>
+<a href="../vote.php">les votes?</a>
 <a href="~/toile_edit/toile_edit.php">editer la toile</a>
-<a href="~/.php">autre</a>
+<a href="~/cree_toile.php">créer une toile</a>
 </div>
 
 <div class="connection">
