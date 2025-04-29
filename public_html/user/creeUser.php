@@ -36,53 +36,22 @@ include("../DBconnect/db_disconnect.php");
 <html>
 	<head>
 	<meta charset="UTF-8">
+	<link rel="stylesheet" href="../css/*.css">
+	<link rek="stylesheet" href="..
 	</head>
-		<link rel="stylesheet" href="creeUser.css">
 		
-			<style>
-	body{
-		margin:0;
-		padding:0;}
-	
-footer {
-	margin:0px;
-	padding:0px;
-    background-color: #537FE7;
-    color: rgba(188, 207, 214, 0.925);
-    position:fixed;
-    bottom: 0;
-	width : 100%;
-	height: 10%;
-	padding-bottom:2%;
-	padding-top:1%;}
-
-#div-image-univsmb{
-position: absolute;
-	top:0;
-	right:0;
-}	
-	
-#image-univsmb{
-	height:9%;	
-	
-}
-
-#div_droits{
-	display:flex;
-	flex-direction:column;
-	justify-content: center;
-	text-align:center;}
-	 </style>
+		
 		
 	<body>
 	<?php
-	include("../header.php");?>
+
+	include("../headerfooter/header.php");?>
 		
 
 	
 	
 	<div id="formulaire">
-<form method="POST" action="creeUser.php">
+	<form method="POST" action="creeUser.php">
 	<p>Nom d'utilisateur</p>
 	<input type="text" name="login">
 	<p>Mot de passe</p>
