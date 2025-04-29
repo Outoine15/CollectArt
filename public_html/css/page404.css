@@ -1,0 +1,12 @@
+#container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+	background-image:url("../images/amoogus.gif");
+}
+
+#container p{
+    font-family: 'Bizarre', sans-serif;
+    font-size: 30px;
+}

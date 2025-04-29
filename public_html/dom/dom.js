@@ -6,6 +6,7 @@
 //     'largeur': $largeur,
 //     'color' : '#000000',
 //     'pixelData' : [],
+//     'loadData' : [],
 //     isDrawing : false
 //     };
 
@@ -376,13 +377,11 @@ function affiche_json(json_data){
 }
 
 // load_json();
-function load_json_data(id){
-    fetch("json_name.php?id="+id)
-        .then(fetch("../toilesJSON/"+id+".json")
-            .then(json_to_data)
-            .then(edit_toile_json)
-            .then(update_zone_dessin));
-}
+function load_json_data(){
+    toile_status["pixelData"]=toile_status["loadData"];
+    edit_toile_json(toile_status["pixelData"]);
+    update_zone_dessin();
+    }
 
 // envoie le json à php pour sauvegarde:
 function send_json_data_for_save(){

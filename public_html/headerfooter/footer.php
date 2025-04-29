@@ -1,49 +1,5 @@
 <?php
-echo "
-
-
-
-	<style>
-	body{
-		display:flex;
-		flex-direction:column;
-		}
-
-#container{
-	flex: 1;
-}
-	
-footer {
-	margin:0px;
-	padding:0px;
-    background-color: #537FE7;
-    color: rgba(188, 207, 214, 0.925);
-    bottom: 0;
-	width : 100%;
-	height: 10%;
-	padding-bottom:2%;
-	padding-top:1%;
-	display:flex;
-	align-items:center;
-	justify-content: space-between;
-}
-
-#div-image-univsmb{
-
-}	
-	
-#image-univsmb{
-	height:9%;	
-	
-}
-
-#div_droits{
-	display:flex;
-	flex-direction:column;
-	justify-content: center;
-	text-align:center;}
-	 </style>
-	 
+echo "	 
 <footer>
       <div></div>
 	  <div id=\"div_droits\">  

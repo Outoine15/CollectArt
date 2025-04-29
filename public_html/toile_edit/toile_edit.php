@@ -1,3 +1,6 @@
+<?php
+header("cache-control: no-cache, max-age=1");
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -25,6 +28,7 @@ if(isset($_GET["id"]) && isset($_GET["name"]) && isset($_GET["hauteur"]) && isse
     $nom=$_GET["name"];
     $hauteur=$_GET["hauteur"];
     $largeur=$_GET["largeur"];
+    $toile_data=file_get_contents("../toilesJSON/$id.json");
     echo "<h1>$nom</h1>\n";
     echo "<script>\n";
     echo "var toile_status = {
@@ -33,11 +37,12 @@ if(isset($_GET["id"]) && isset($_GET["name"]) && isset($_GET["hauteur"]) && isse
             'hauteur': $hauteur,
             'largeur': $largeur,
             'color' : '#000000',
-            'pixelData' : [],
+            'pixelData' : $toile_data,
+            'loadData' : $toile_data,
             isDrawing : false
             };\n";
             echo "make_toile();\n";
-            echo "load_json_data($id);\n";
+            echo "load_json_data();\n";
             echo "console.log(toile_status);\n";
     echo "</script>\n";
 }

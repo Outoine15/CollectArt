@@ -8,8 +8,8 @@ $debug = false;
 	CR: créé un nouvel enregistrement  
 	suppose un id auto-incrementé
 */
-function insert_toile($conn, $name, $description, $id_creator){
-	$sql="INSERT INTO `toile`(`name`, `description`, `id_creator`) value('$name', '$description', $id_creator)";
+function insert_toile($conn, $name, $description, $id_creator, $hauteur, $largeur, $finished){
+	$sql="INSERT INTO `toile`(`name`, `description`, `id_creator`, `hauteur`, `largeur`, `finished`) value('$name', '$description', $id_creator, $hauteur, $largeur, $finished)";
 	global $debug;
 	if($debug){echo $sql;} 
 	$ret=mysqli_query($conn, $sql);
@@ -26,8 +26,8 @@ function get_last_inserted_id($conn){
 /*
 	U: met à jour les valeurs de l'enregistrement 
 */
-function update_toile($conn, $id, $name, $description, $id_creator){
-	$sql="UPDATE `toile` set `name`='$name', `description`='$description', `id_creator`=$id_creator WHERE `id`=$id";
+function update_toile($conn, $id, $name, $description, $id_creator, $hauteur, $largeur, $finished){
+	$sql="UPDATE `toile` set `name`='$name', `description`='$description', `id_creator`=$id_creator, `hauteur`=$hauteur, `largeur`=$largeur, `finished`=$finished WHERE `id`=$id";
 	global $debug;
 	if($debug){echo $sql;} 
 	$ret=mysqli_query($conn, $sql);

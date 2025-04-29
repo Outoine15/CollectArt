@@ -5,6 +5,7 @@
     <script src="../dom/script.js"></script>
     <title>CollectArt</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/default.css">
 </head>
 <body>
 

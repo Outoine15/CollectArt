@@ -11,7 +11,7 @@
 include("~/public_html/DBconnect/db_connect.php");
 include("menu_header.php");
 include("~/public_html/crud/toile.crud.php");
-// $toiles=select_toiles($conn);
+$toiles=select_toiles($conn);
 // // print_r($toiles);
 // $toiles=json_encode($toiles);
 // // print_r($toiles);
