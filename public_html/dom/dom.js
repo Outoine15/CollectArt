@@ -148,7 +148,12 @@ function create_palette_buttons(){
 
     // Récupère le bouton de réinitialisation de la zone de dessin
     var reset_button = get_reset_toile_button();
+
+    // Récupère le bouton de sauvegarde de la zone de dessin
+    var save_button = get_save_toile_button();
+
     div.appendChild(reset_button);
+    div.appendChild(save_button);
 
     return div;
 }
@@ -187,6 +192,9 @@ function setupEventListeners(){
 
     // Réinitialiser le dessin
     document.querySelector("#button_reset_toile").addEventListener("click", reset_dessin);
+
+    // Sauvegarder le dessin
+    document.querySelector("#button_save_toile").addEventListener("click", send_json_data_for_save);
     
 }
 
@@ -244,6 +252,16 @@ function get_reset_toile_button(){
     button.className = "palette_button";
     button.id = "button_reset_toile";
     button.innerHTML = "Réinitialiser";
+
+    return button;
+}
+
+// Renvoie le bouton de sauvegarde de la zone de dessin
+function get_save_toile_button(){
+    var button = document.createElement("button");
+    button.className = "palette_button";
+    button.id = "button_save_toile";
+    button.innerHTML = "Sauvegarder";
 
     return button;
 }
