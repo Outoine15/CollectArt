@@ -143,6 +143,7 @@ function createDisplayToile(toile) {
 
 // Fonction pour charger les données JSON d'une toile
 function loadToileData(id) {
+    // TODO: choisir ce qui est mieux: tout plein de truc différent pou un truc qui marche (si on peut pas réparer)
     let toileData = [];
     for (const i in listToiles) {
         const toile = listToiles[i];
