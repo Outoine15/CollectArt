@@ -16,9 +16,9 @@ include("../headerfooter/header.php");
 
 <div id="container">
     <div id="text-container">
-        <p>OUPS , il y a une ereur. (404)</p>
-        <p>Oups, la page que vous shouaitez consulter n'existe pas...</p>
-        <p>bah alors on sait pas quel chemin on prend ?</p>
+        <p id="oups-error">OUPS, il y a une erreur (404)</p>
+        <p>La page que vous shouaitez consulter n'existe pas...</p>
+        <p>bah alors on ne sait pas quel chemin on prend ?</p>
     </div>
 </div> 
 
