@@ -144,15 +144,13 @@ function createDisplayToile(toile) {
 // Fonction pour charger les données JSON d'une toile
 function loadToileData(id) {
     let toileData = [];
-    // console.log("searched id="+id);
     for (const i in listToiles) {
         const toile = listToiles[i];
         if(toile["id"]==id){
-            toileData=toile;
-            // console.log(toileData);
+            toileData=toile["0"];
         }
     }
-    console.log(toileData);
+    // console.log(toileData);
     return toileData;
 
     // just ça ca marche: (DO NOT TOUCH IT)
@@ -174,6 +172,8 @@ function deleteChilds(div) {
 // Chargement asynchrone des données des toiles
 function loadToileDataAsync(id, hauteur, largeur) {
     let pixelData = loadToileData(id)
+
+    //le problème c'est que si c'est pas dans un fetch ça casse tout:
     // Mise à jour de mini toile
     var previewElement = document.getElementById('preview-' + id);
 
