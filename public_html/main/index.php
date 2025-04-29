@@ -21,10 +21,18 @@ include("../crud/toile.crud.php");
 
 <?php
 $toiles=select_toiles($conn);
-$toiles=json_encode($toiles);
+for ($i=0; $i < count($toiles); $i++) { 
+    $id=$toiles[$i]["id"];
+    $toileJSONdata = file_get_contents("../toilesJSON/$id.json");
+    $toileData=json_decode($toileJSONdata);
+    array_push($toiles[$i],$toileData);
+}
 
+$toiles=json_encode($toiles);
+print_r($toiles);
 echo "<script>";
 echo "var listToiles = ${toiles};\n";
+echo "var listMyToiles = [];\n";
 echo "displayToiles()";
 echo "</script>";
 
