@@ -1,0 +1,113 @@
+/* 
+================================================
+============= AFFICHAGE DES TOILES =============
+================================================
+*/
+
+.toiles-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    max-width: 85%;
+    margin: 30px auto;
+    justify-content: center;
+}
+
+/* 
+==========================
+ITEM TOILE
+==========================
+*/
+
+.toile-item {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    transition: transform 0.2s ease;
+    border-top: 5px solid #1a4b8c;
+}
+
+.toile-item:hover {
+    transform: translateY(-5px);
+}
+
+/* 
+==========================
+ITEM TOILE : Affichage miniature
+==========================
+*/
+
+.toile-preview {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    background-color: #f9f9f9;
+}
+
+.mini-toile-table {
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 4px rgba(0,0,0,0.1);
+    width: 150px;
+    height: 150px;
+    table-layout: fixed;
+}
+
+.mini-toile-table td {
+    padding: 0;
+    border: none;
+}
+
+/* 
+==========================
+ITEM TOILE : Informations
+==========================
+*/
+
+.toile-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+
+.toile-name {
+    font-size: 1.3em;
+    margin: 0 0 10px 0;
+    color: black;
+    font-weight: 600;
+}
+
+.toile-description {
+    color: #555;
+    margin: 0 0 15px 0;
+    line-height: 1.4;
+    flex-grow: 1;
+    font-size: 0.9em;
+}
+
+.toile-details-btn {
+    display: inline-block;
+    background-color: #3f51b5;
+    color: white;
+    padding: 5px 15px;
+    text-decoration: none;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    text-align: center;
+    margin-top: auto;
+    font-size: 1em;
+    align-self: flex-end;
+    box-shadow: 0 2px 4px rgba(63, 81, 181, 0.3);
+}
+
+.toile-details-btn:hover {
+    background-color: #303f9f;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(63, 81, 181, 0.4);
+}

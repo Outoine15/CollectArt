@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <script src="../dom/dom.js"></script>
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
@@ -9,6 +10,9 @@
 <body>
 <button id="save" type="button" name="save" onclick="send_json_data_for_save()">sauvegarder</button>
 
+<!-- <filesMatch ".php">
+    Header set Cache-Control "max-age=84600, public"
+</filesMatch> -->
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
