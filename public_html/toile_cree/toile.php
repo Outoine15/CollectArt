@@ -18,11 +18,7 @@ include("../headerfooter/header.php");
 <div id="container">
 <h1>votre toile est en cours de création</h1>
 <a href="../pages/mes_toiles.php">retour a mes toiles</a>
-</div>
-</body>
-</html>
 <?php
-include("../headerfooter/footer.php");
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 include("../DBconnect/db_connect.php");
@@ -32,32 +28,42 @@ if(isset($_POST["nom"]) && isset($_POST["hauteur"]) && isset($_POST["largeur"]) 
     $description=$_POST["description"];
     $hauteur=$_POST["hauteur"];
     $largeur=$_POST["largeur"];
-    $id_creator=2;
-    if(isset($_SESSION["user"])){
-        $id_creator=(int)$_SESSION["user"];
-    }
-    // print_r($id_creator);
-    insert_toile($conn,$nom,$description,$id_creator,$hauteur,$largeur,0);
-    $id=get_last_inserted_id($conn);
-    file_put_contents("../toilesJSON/$id.json","[]");
-    $toile_data=file_get_contents("../toilesJSON/$id.json");
-    echo "<script>\n";
-    echo "var toile_status = {
-            'nom': '$nom',
-            'toile_id': $id,
-            'hauteur': $hauteur,
-            'largeur': $largeur,
-            'color' : '#000000',
-            'pixelData' : $toile_data,
-            'loadData' : $toile_data,
-            isDrawing : false
-            };\n";
-            echo "make_toile('create');\n";
-            echo "send_json_data_for_save();\n";
-            // echo "load_json_data();\n";
-            echo "console.log(toile_status);\n";
+    $id_creator=0;
+    if($hauteur > 100 || $largeur > 100){
+        echo "<div>toile trop grand, vous voullez tous casser ou quoi? (max 100px hauteur/largeur)</div>";
+    } else{
+        if(isset($_SESSION["user"])){
+            $id_creator=(int)$_SESSION["user"];
         }
-echo "</script>";
-
+        // print_r($id_creator);
+        insert_toile($conn,$nom,$description,$id_creator,$hauteur,$largeur,0);
+        $id=get_last_inserted_id($conn);
+        file_put_contents("../toilesJSON/$id.json","[]");
+        $toile_data=file_get_contents("../toilesJSON/$id.json");
+        echo "<script>\n";
+        echo "var toile_status = {
+                'nom': '$nom',
+                'toile_id': $id,
+                'hauteur': $hauteur,
+                'largeur': $largeur,
+                'color' : '#000000',
+                'pixelData' : $toile_data,
+                'loadData' : $toile_data,
+                isDrawing : false
+                };\n";
+                echo "make_toile('create');\n";
+                echo "send_json_data_for_save();\n";
+                // echo "load_json_data();\n";
+                echo "console.log(toile_status);\n";
+            }
+        echo "</script>";
+    }
 // header("Location: ../pages/mes_toiles.php");
 ?>
+</div>
+
+<?php
+include("../headerfooter/footer.php");
+?>
+</body>
+</html>
