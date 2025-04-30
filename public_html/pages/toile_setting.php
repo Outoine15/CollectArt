@@ -5,10 +5,11 @@ include("../DBconnect/db_connect.php");
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/default.css">
     <title>parramètres de toile</title>
 </head>
 
