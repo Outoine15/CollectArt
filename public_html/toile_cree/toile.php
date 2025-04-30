@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(!isset($_SESSION["user"])){
+    header("Location: ../user/connUser.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -23,7 +29,12 @@ if(isset($_POST["nom"]) && isset($_POST["hauteur"]) && isset($_POST["largeur"]) 
     $description=$_POST["description"];
     $hauteur=$_POST["hauteur"];
     $largeur=$_POST["largeur"];
-    insert_toile($conn,$nom,$description,1,$hauteur,$largeur,0);
+    if(isset($_SESSION["user"])){
+        $id_creator=$_SESSION["user"];
+    } else{
+        $id_creator=1;
+    }
+    insert_toile($conn,$nom,$description,$id_creator,$hauteur,$largeur,0);
     $id=get_last_inserted_id($conn);
     file_put_contents("../toilesJSON/$id.json","[]");
     $toile_data=file_get_contents("../toilesJSON/$id.json");

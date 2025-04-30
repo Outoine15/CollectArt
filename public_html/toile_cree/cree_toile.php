@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(!isset($_SESSION["user"])){
+    header("Location: ../user/connUser.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
