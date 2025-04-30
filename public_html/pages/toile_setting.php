@@ -17,11 +17,12 @@ include("../DBconnect/db_connect.php");
     include("../headerfooter/header.php");
     ?>
     <div id="container">
-<?php
-    if(isset($_GET["id"]));
-    echo "<h1>paramètres de la toile $toile_name</h1>"
+        <?php
+        if (isset($_GET["id"]))
+            ;
+        echo "<h1>paramètres de la toile $toile_name</h1>"
 
-?>
+            ?>
     </div>
     <?php
     include("../headerfooter/footer.php");
