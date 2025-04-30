@@ -1,6 +1,7 @@
 html {
-    background-color:black ;
+    background-color: black;
 }
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -16,7 +17,7 @@ header {
     margin: 0;
 }
 
-nav{
+nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -29,7 +30,7 @@ nav{
     margin-left: 20px;
 }
 
-.nav-header-buttons{
+.nav-header-buttons {
     flex: 2;
     display: flex;
     justify-content: center;
@@ -39,7 +40,7 @@ nav{
     text-decoration: none;
     color: rgb(160, 18, 18);
     margin-left: 20px;
-    background-color:#420303be;
+    background-color: #420303be;
     padding: 10px;
     border-radius: 30%;
     justify-content: center;
@@ -49,18 +50,21 @@ nav{
 .toile-delete-btn {
     text-decoration: none;
     color: rgb(0, 0, 0);
-    background-color:#ff0000be;
+    background-color: #ff0000be;
     justify-content: center;
     text-align: center;
     height: auto;
-    border-radius: 5px; 
+    border-radius: 5px;
     transition: background-color 0.2s;
 }
 
-.toile-delete-btn:hover{
+.toile-delete-btn:hover {
     background-color: #da1212d2;
 }
-.nav-title a, .nav-header-buttons a, .connection a{
+
+.nav-title a,
+.nav-header-buttons a,
+.connection a {
     color: rgb(160, 18, 18);
     text-decoration: none;
     padding: 30px;
@@ -68,34 +72,36 @@ nav{
     font-size: 1.4em;
 }
 
-.nav-title a:hover, .nav-header-buttons a:hover, .connection a:hover{
+.nav-title a:hover,
+.nav-header-buttons a:hover,
+.connection a:hover {
     background-color: #da1212d2;
 }
 
-#container{
+#container {
     flex: 1;
 }
-	
+
 footer {
-	margin:0px;
-	padding:0px;
+    margin: 0px;
+    padding: 0px;
     background-color: #fd5c5c;
     color: rgba(236, 183, 152, 0.918);
-	width: 100%;
-	display:flex;
-	align-items:center;
-	justify-content: space-between;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-	
-#image-univsmb{
-	height:9%;	
-	
+
+#image-univsmb {
+    height: 9%;
+
 }
 
-#div_droits{
-	display:flex;
-	flex-direction:column;
-	justify-content: center;
-	text-align:center;
+#div_droits {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
 }

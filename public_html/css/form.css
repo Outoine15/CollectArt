@@ -1,4 +1,4 @@
-#container{
+#container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,20 +11,20 @@
 ============================================
 */
 
-#form_container{
-	border: none;
-	border-radius: 10px;
-	padding: 35px;
-	margin: 20px 0;
-	max-width: 550px;
-	width: 100%;
-	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+#form_container {
+    border: none;
+    border-radius: 10px;
+    padding: 35px;
+    margin: 20px 0;
+    max-width: 550px;
+    width: 100%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .form_title {
-	text-align: center;
-	margin-bottom: 20px;
-	color: #1550bd;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #1550bd;
 }
 
 .error_message {
@@ -45,7 +45,7 @@
     font-size: 0.95em;
 }
 
-#formulaire{
+#formulaire {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -55,32 +55,32 @@
     margin-bottom: 20px;
 }
 
-.form_txt{
-	font-size: 1em;
-	font-weight: 600;
-	color: #333;
-	margin-bottom: 5px;
+.form_txt {
+    font-size: 1em;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
 }
 
-.form_contrainte{
-	font-size: 0.85em;
-	color: #666;
-	margin-top: 5px;
-	font-style: italic;
+.form_contrainte {
+    font-size: 0.85em;
+    color: #666;
+    margin-top: 5px;
+    font-style: italic;
 }
 
-.pwd_container{
+.pwd_container {
     display: flex;
     align-items: center;
     color: #1550bd;
 }
 
-.pwd_container input[type="checkbox"]{
+.pwd_container input[type="checkbox"] {
     margin-right: 5px;
     cursor: pointer;
 }
 
-#formulaire a{
+#formulaire a {
     color: #1550bd;
     text-decoration: none;
     text-align: center;
@@ -94,10 +94,10 @@
 }
 
 .form_header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
 }
 
 /* 
@@ -119,15 +119,16 @@ GESTION DES INPUTS
     margin-top: 10px;
 }
 
-#formulaire input[type="submit"]:hover{
+#formulaire input[type="submit"]:hover {
     background-color: #2020ff;
 }
 
-#formulaire input[type="submit"]:active{
+#formulaire input[type="submit"]:active {
     transform: scale(0.99);
 }
 
-#formulaire input[type="text"], #formulaire input[type="password"]{
+#formulaire input[type="text"],
+#formulaire input[type="password"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #ddd;

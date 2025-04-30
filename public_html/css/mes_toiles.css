@@ -4,7 +4,7 @@
 ==========================================================
 */
 
-#mes_toiles_header{
+#mes_toiles_header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -21,20 +21,20 @@ INFORMATIONS
 ==========================
 */
 
-#header_part1 h1{
+#header_part1 h1 {
     color: #1550bd;
     margin: 0 0 10px 0;
     font-size: 2em;
 }
 
-#header_part1 p{
+#header_part1 p {
     color: #555;
     margin: 0;
     font-size: 1.2em;
     line-height: 1.4;
 }
 
-.mes_toiles_create{
+.mes_toiles_create {
     display: inline-block;
     background-color: #2fc133;
     color: white;
@@ -53,7 +53,7 @@ INFORMATIONS
     box-shadow: 0 4px 8px rgba(71, 160, 74, 0.4);
 }
 
-#header_part2{
+#header_part2 {
     background-color: #e2fdff;
     padding: 20px;
     border-radius: 10px;
@@ -63,14 +63,14 @@ INFORMATIONS
     box-shadow: 0 4px 8px rgba(159, 226, 255, 0.4);
 }
 
-.nb_toiles{
+.nb_toiles {
     font-size: 3em;
     font-weight: 700;
     color: #1550bd;
     margin: 5px 0;
 }
 
-.txt_nb_toiles{
+.txt_nb_toiles {
     font-size: 1.4em;
     color: #666;
     line-height: 0;

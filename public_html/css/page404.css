@@ -1,24 +1,24 @@
-#container{
+#container {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    
+
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-#container p{
+#container p {
     font-family: 'Bizarre', sans-serif;
     font-size: 1.4em;
 }
 
-#oups-error{
+#oups-error {
     color: red;
 }
 
-#text-container{
+#text-container {
     border: none;
     border-radius: 10px;
     background-color: #E9F8F9;
