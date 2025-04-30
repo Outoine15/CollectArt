@@ -1,5 +1,96 @@
+#container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* 
+============================================
+============= FORMULAIRES USER =============
+============================================
+*/
+
+#form_container{
+	border: none;
+	border-radius: 10px;
+	padding: 30px;
+	margin: 20px 0;
+	max-width: 550px;
+	width: 100%;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form_title {
+	text-align: center;
+	margin-bottom: 30px;
+	color: #1550bd;
+}
+
+.error_message {
+    background-color: #ffeaed;
+    color: red;
+    padding: 12px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 0.95em;
+}
+
+.success_message {
+    background-color: #e5f6e7;
+    color: green;
+    padding: 12px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 0.95em;
+}
+
 #formulaire{
-	display:flex;
-	flex-direction:column;
-	align-items:center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form_section {
+    margin-bottom: 20px;
+}
+
+.form_txt{
+	font-size: 1em;
+	font-weight: 600;
+	color: #333;
+	margin-bottom: 5px;
+}
+
+.form_contrainte{
+	font-size: 0.85em;
+	color: #666;
+	margin-top: 5px;
+	font-style: italic;
+}
+
+.pwd_container{
+    display: inline;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 0.95em;
+    color: #333;
+}
+
+.pwd_container input[type="checkbox"]{
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+#formulaire a{
+    color: #1550bd;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.95em;
+}
+
+#formulaire a:hover {
+    color: #1818ff;
+    text-decoration: underline;
 }

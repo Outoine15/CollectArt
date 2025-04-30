@@ -52,24 +52,48 @@ function select_admin($conn){
 	return rs_to_tab_admin($res);
 }
 
+function select_admin_by_id($conn, $id){
+	$sql="SELECT * FROM `admin` WHERE `id`=$id";
+	global $debug;
+	if($debug){echo $sql;}
+	$res = mysqli_query($conn, $sql);
+	$tab = rs_to_tab_user($res);
+	return $tab[0];
+}
+
 /*
 is in DB all:
 */
-function is_in_DB_get_id($Nom , $Password , $conn){
-	$is_in=0;
-	$id=0;
-	$result = mysqli_query($conn,"SELECT * FROM `admin`");
-	while ($row = mysqli_fetch_assoc($result)){
-		$NomBDD=$row['name'];
-		$PasswordBDD=$row['pwd'];
-		
-		if ($Nom == $NomBDD && $Password==$PasswordBDD){
-		$is_in=1;
-		$id=$row["id"];
-		}
+function get_admin_account($conn, $name, $pwd){
+	$sql="SELECT * FROM `admin` WHERE `name`='$name' AND `pwd`='$pwd'";
+	global $debug;
+	if($debug){echo $sql;}
+	$res = mysqli_query($conn, $sql);
+	$tab = rs_to_tab_user($res);
+
+	$user = [];
+	if($tab != []){
+		$user = $tab[0];
 	}
-	return [$is_in,$id] ;
+	
+	return $user;
 }
+
+function name_existe_admin($conn, $name){
+	$sql="SELECT * FROM `admin` WHERE `name`='$name'";
+	global $debug;
+	if($debug){echo $sql;}
+	$res = mysqli_query($conn, $sql);
+	$tab = rs_to_tab_user($res);
+
+	$existe = false;
+	if($tab != []){
+		$existe = true;
+	}
+	
+	return $existe;
+}
+
 
 /**
  * Fonction auxiliaire pour transformer un rs en tableau

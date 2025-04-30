@@ -50,6 +50,15 @@ function select_user($conn){
 	return rs_to_tab_user($res);
 }
 
+function select_user_by_id($conn, $id){
+	$sql="SELECT * FROM `user` WHERE `id`=$id";
+	global $debug;
+	if($debug){echo $sql;}
+	$res = mysqli_query($conn, $sql);
+	$tab = rs_to_tab_user($res);
+	return $tab[0];
+}
+
 /**
  * Fonction auxiliaire pour transformer un rs en tableau
  */
@@ -65,32 +74,37 @@ function rs_to_tab_user($rs){
 	* Fonction de vérification si user et pwd sont dans bdd
 */
 
-function is_in_DB($Nom , $Password , $conn){
-	$is_in=0;
-	$result = mysqli_query($conn,"SELECT * FROM user");
-	while ($row = mysqli_fetch_assoc($result)){
-		$NomBDD=$row['name'];
-		$PasswordBDD=$row['pwd'];
-		
-		if ($Nom == $NomBDD && $Password==$PasswordBDD){
-		$is_in=1;}
+function get_user_account($conn, $name, $pwd){
+	$sql="SELECT * FROM `user` WHERE `name`='$name' AND `pwd`='$pwd'";
+	global $debug;
+	if($debug){echo $sql;}
+	$res = mysqli_query($conn, $sql);
+	$tab = rs_to_tab_user($res);
+
+	$user = [];
+	if($tab != []){
+		$user = $tab[0];
 	}
-	return $is_in ;
+	
+	return $user;
 }
 
 /**
  	* Fonction de vérification si un user est déja utilisé 
  */
-function pseudo_existe($conn, $Nom){
-	$existe=0;
-	$result = mysqli_query($conn,"SELECT * FROM user WHERE name = '$Nom'");
-	while ($row = mysqli_fetch_assoc($result)){
-		$NomBD=$row['name'];
-		
-		if ($Nom == $NomBD ){
-		$existe=1;}
+function name_existe_user($conn, $name){
+	$sql="SELECT * FROM `user` WHERE `name`='$name'";
+	global $debug;
+	if($debug){echo $sql;}
+	$res = mysqli_query($conn, $sql);
+	$tab = rs_to_tab_user($res);
+
+	$existe = false;
+	if($tab != []){
+		$existe = true;
 	}
-	return $existe ;
+	
+	return $existe;
 }
 
 

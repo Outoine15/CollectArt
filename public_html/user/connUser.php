@@ -1,38 +1,54 @@
-<!DOCTYPE html>
-<html lang="fr">
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
-
-
 include("../crud/user.crud.php");
 include("../DBconnect/db_connect.php");
 
+session_start();
 
+if(isset($_SESSION["user"])){
+	header("Location: user.php");
+}
 
-if(isset($_POST["login"]) && isset($_POST["passwd"])){
-	$session_data = is_in_DB_get_id($_POST["login"] , $_POST["passwd"] , $conn);
-    print_r($session_data);
-    $estdansBDD = $session_data[0];
-    $id = $session_data[1];
-	if($estdansBDD==1){
-        echo "hello there";
-        $_SESSION["id"]=$id;
-        
+$message_connexion = "";
+
+if(isset($_POST["user_name"]) && isset($_POST["user_pwd"])){
+	$name = $_POST["user_name"];
+	$pwd = $_POST["user_pwd"];
+
+	$user = get_user_account($conn, $name, $pwd);
+
+    if($user == []){
+		$message_connexion .= "<p class='error_message'>Erreur : Identifiant et/ou mot de passe invalide</p>";
+	}else{
+		/* session user */
+		$_SESSION["user"] = $user["id"]; 
+		
+		/* redirection */
+		header("Location: user.php");
 	}
 }
 
-
-
-include("../DBconnect/db_disconnect.php");
 ?>
+
+<!DOCTYPE html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/default.css">
     <link rel="stylesheet" href="../css/form.css">
     <title>Se connecter</title>
-    <script src="../script/page404.js"></script>
+	<script>
+	function passwordSeeHide(checkboxId, pwdId){
+		var checkbox = document.getElementById(checkboxId);
+		var pwd = document.getElementById(pwdId);
+		
+		if(checkbox.checked){
+			pwd.type = "text";
+		}else{
+			pwd.type = "password";
+		}
+	}
+	</script>
 </head>
 <body>
 <?php
@@ -40,16 +56,34 @@ include("../headerfooter/header.php");
 ?>
 
 <div id="container">
-    	<div id="formulaire">
-<form method="POST" action="connUser.php">
-	<p>Nom d'utilisateur</p>
-	<input type="text" name="login">
-	<p>Mot de passe</p>
-	
-	<div><input type="text" name="passwd">
-		<input type="submit"></div>
-	</form>
-	<a href="creeUser.php">Créer un compte</a>
+	<div id="form_container">
+		<h2 class="form_title">Se connecter</h2>
+		<?php
+		echo $message_connexion;
+		?>
+
+		<div id="formulaire">
+			<form method="POST" action="connUser.php">
+				<div class="form_section">
+					<p class="form_txt">Nom d'utilisateur</p>
+					<input type="text" name="user_name">
+				</div>
+
+				<div class="form_section">
+					<p class="form_txt">Mot de passe</p>
+					<input type="password" name="user_pwd" id="user_pwd">
+
+					<div class="pwd_container">
+						<input type="checkbox" id="checkbox_pwd" onclick="passwordSeeHide('checkbox_pwd', 'user_pwd')">
+						<label for="checkbox_pwd">Afficher/Cacher le mot de passe</label>
+					</div>
+				</div>
+
+				<input type="submit" value="Se connecter">
+			</form>
+
+			<a href="creeUser.php">Créer un compte</a>
+		</div>
 	</div>
 </div> 
 
@@ -58,3 +92,7 @@ include("../headerfooter/footer.php");
 ?>    
 </body>
 </html>
+
+<?php
+include("../DBconnect/db_disconnect.php");
+?>

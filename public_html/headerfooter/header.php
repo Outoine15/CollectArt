@@ -1,14 +1,5 @@
 <?php
-session_is_registered()
 
-session_start();
-$_SESSION["ID"]=0;
-if($_SESSION["ID"]>0){
-    $deconnectHref ="deconnUser";
-    $connecte="Deconnection";
-}
-
-else{$deconnectHref="connUser";$connecte="Connexion au compte";}
 echo "
 
 <header>
@@ -25,7 +16,7 @@ echo "
 </div>
 
 <div class=\"connection\">
-<a href=\"../user/$deconnectHref.php\">$connecte</a>
+<a href=\"../user/user.php\">Compte</a>
 </div> 
 
 </nav>
