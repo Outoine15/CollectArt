@@ -1,0 +1,88 @@
+html {
+    background-color:black ;
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header {
+    background-color: #fa4141;
+    color: rgb(160, 18, 18);
+    padding: 0;
+    margin: 0;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.nav-title {
+    flex: 1;
+    text-align: left;
+    margin-left: 20px;
+}
+
+.nav-header-buttons{
+    flex: 2;
+    display: flex;
+    justify-content: center;
+}
+
+#container #deconnection {
+    text-decoration: none;
+    color: rgb(160, 18, 18);
+    margin-left: 20px;
+    background-color:#860b0bbe;
+    padding: 10px;
+    border-radius: 30%;
+    
+    justify-content: center;
+    height: auto;
+}
+
+.nav-title a, .nav-header-buttons a, .connection a{
+    color: rgb(160, 18, 18);
+    text-decoration: none;
+    padding: 30px;
+    transition: background-color 0.3s;
+    font-size: 1.4em;
+}
+
+.nav-title a:hover, .nav-header-buttons a:hover, .connection a:hover{
+    background-color: #da1212d2;
+}
+
+#container{
+    flex: 1;
+}
+	
+footer {
+	margin:0px;
+	padding:0px;
+    background-color: #fd5c5c;
+    color: rgba(236, 183, 152, 0.918);
+	width: 100%;
+	display:flex;
+	align-items:center;
+	justify-content: space-between;
+}
+
+	
+#image-univsmb{
+	height:9%;	
+	
+}
+
+#div_droits{
+	display:flex;
+	flex-direction:column;
+	justify-content: center;
+	text-align:center;
+}

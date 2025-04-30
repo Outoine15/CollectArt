@@ -25,7 +25,7 @@ include("../crud/toile.crud.php");
 ?>
 
 <div id="container">
-<a href="deconnAdmin.php">déconnexion</a>
+<a id="deconnection" href="deconnAdmin.php">déconnexion</a>
 <div id="toiles-container"></div>
 </div>
 
