@@ -34,15 +34,33 @@ include("../headerfooter/header.php");
 
 <div id="container">
     <div id="mes_toiles_header">
-        <h1>Mes Toiles</h1>
-        <p>
-        <?php
-        $user_name = $user["name"];
-        echo "Bienvenue dans votre galerie, <strong>$user_name</strong> ! 
-        Vous y trouverez toutes les toiles que vous avez créées ainsi que celles auxquelles vous participez. "
-        ?>
-        </p>
-        <a href="../toile_cree/cree_toile.php" class="mes_toiles_create">Créer une toile</a>
+        <div id="header_part1">
+            <h1>Mes Toiles</h1>
+            <p>
+            <?php
+            $user_name = $user["name"];
+            echo "Bienvenue dans votre galerie, <strong>$user_name</strong> ! 
+            Vous y trouverez toutes les toiles que vous avez créées ainsi que celles auxquelles vous participez."
+            ?>
+            </p>
+            <a href="../toile_cree/cree_toile.php" class="mes_toiles_create">Créer une toile</a>
+        </div>
+        
+        <div id="header_part2">
+            <?php
+            $nb_toiles = count(select_toiles_by_user_id($conn, $user_id));
+            $txt_toile = "Toile";
+            if($nb_toiles > 1){
+                $txt_toile .= "s";
+            }
+            $txt_toile .= " au total";            
+
+            $html = "<p class='nb_toiles'>" . $nb_toiles . "</p>";
+            $html .= "<p class='txt_nb_toiles'>" . $txt_toile . "</p>";
+
+            echo $html;
+            ?>
+        </div>
     </div>
 
     <div id="toiles-container"></div>
