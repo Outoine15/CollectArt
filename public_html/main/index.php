@@ -21,14 +21,6 @@ include("../crud/toile.crud.php");
 
 <?php
 $toiles=select_toiles($conn);
-// le code pour avoir le contenu des toiles avec:
-// for ($i=0; $i < count($toiles); $i++) { 
-    // $id=$toiles[$i]["id"];
-    // $toileJSONdata = file_get_contents("../toilesJSON/$id.json");
-    // $toileJSONdata=json_decode($toileJSONdata);
-    // array_push($toiles[$i],$toileJSONdata);
-// }
-
 $toiles=json_encode($toiles);
 // print_r($toiles);
 echo "<script>";

@@ -1,8 +1,7 @@
 <?php
 session_start();
-if(isset($_SESSION["id"])){
-    unset($_SESSION["id"]);
-    session_destroy();
+if(isset($_SESSION["admin_id"])){
+    unset($_SESSION["admin_id"]);
 }
 header("Location: ../index.php");
 ?>
