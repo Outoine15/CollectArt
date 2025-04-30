@@ -17,14 +17,16 @@
 
 // 
 // Fonction appelée au chargement de la page
-function make_toile(){
+function make_toile(use=""){
     // Création de la toile
 
     toile = create_toile();
-    document.body.appendChild(toile);
+    if(use!="create"){
+        document.body.appendChild(toile);
 
-    // Gestionnaire des événements
-    setupEventListeners();
+        // Gestionnaire des événements
+        setupEventListeners();
+    }
 }
 
 // Création de la toile
@@ -425,6 +427,7 @@ function send_json_data_for_save(){
 
     // // Sending data with the request
     xhr.send(data);
+    window.setTimeout(window.location = "../pages/mes_toiles.php",5000);
 }
 
 // Convertit le contenu en json

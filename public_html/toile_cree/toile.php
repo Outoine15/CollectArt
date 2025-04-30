@@ -4,21 +4,7 @@ if(!isset($_SESSION["user"])){
     header("Location: ../user/connUser.php");
 }
 ?>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/toile.css">
-    <link rel="stylesheet" href="../css/default.css">
-    <script src="../dom/dom.js"></script>
-    <title>toile</title>
-</head>
-
-<?php
-include("../headerfooter/header.php");
-?>
-<div id="container">
+<script src="../dom/dom.js"></script>
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
@@ -29,16 +15,15 @@ if(isset($_POST["nom"]) && isset($_POST["hauteur"]) && isset($_POST["largeur"]) 
     $description=$_POST["description"];
     $hauteur=$_POST["hauteur"];
     $largeur=$_POST["largeur"];
+    $id_creator=2;
     if(isset($_SESSION["user"])){
-        $id_creator=$_SESSION["user"];
-    } else{
-        $id_creator=1;
+        $id_creator=(int)$_SESSION["user"];
     }
+    // print_r($id_creator);
     insert_toile($conn,$nom,$description,$id_creator,$hauteur,$largeur,0);
     $id=get_last_inserted_id($conn);
     file_put_contents("../toilesJSON/$id.json","[]");
     $toile_data=file_get_contents("../toilesJSON/$id.json");
-    echo "<h1>$nom</h1>";
     echo "<script>\n";
     echo "var toile_status = {
             'nom': '$nom',
@@ -50,16 +35,12 @@ if(isset($_POST["nom"]) && isset($_POST["hauteur"]) && isset($_POST["largeur"]) 
             'loadData' : $toile_data,
             isDrawing : false
             };\n";
-            echo "make_toile();\n";
+            echo "make_toile('create');\n";
+            echo "send_json_data_for_save();\n";
             // echo "load_json_data();\n";
             echo "console.log(toile_status);\n";
         }
 echo "</script>";
-?>
-</div>
 
-<?php
-include("../headerfooter/footer.php");
+// header("Location: ../pages/mes_toiles.php");
 ?>
-</body>
-</html>

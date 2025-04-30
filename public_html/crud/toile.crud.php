@@ -67,7 +67,7 @@ function select_toile($conn, $id){
 }
 
 function select_toile_name($conn,$id){
-	$sql="SELECT 'name' FROM 'toile' WHERE 'id'=$id";
+	$sql="SELECT `name` FROM 'toile' WHERE 'id'=$id";
 	global $debug;
 	if($debug){echo $sql;}
 	$res = mysqli_query($conn, $sql);
