@@ -39,14 +39,27 @@ nav{
     text-decoration: none;
     color: rgb(160, 18, 18);
     margin-left: 20px;
-    background-color:#860b0bbe;
+    background-color:#420303be;
     padding: 10px;
     border-radius: 30%;
-    
     justify-content: center;
     height: auto;
 }
 
+.toile-delete-btn {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    background-color:#ff0000be;
+    justify-content: center;
+    text-align: center;
+    height: auto;
+    border-radius: 5px; 
+    transition: background-color 0.2s;
+}
+
+.toile-delete-btn:hover{
+    background-color: #da1212d2;
+}
 .nav-title a, .nav-header-buttons a, .connection a{
     color: rgb(160, 18, 18);
     text-decoration: none;
