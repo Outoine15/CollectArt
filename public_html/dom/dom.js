@@ -427,7 +427,9 @@ function send_json_data_for_save(){
 
     // // Sending data with the request
     xhr.send(data);
-    window.setTimeout(window.location = "../pages/mes_toiles.php",5000);
+
+    // fait tout cassé dans un sense ou dans l'autre:
+    // window.setTimeout(window.location = "../pages/mes_toiles.php",5000);
 }
 
 // Convertit le contenu en json

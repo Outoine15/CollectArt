@@ -66,12 +66,24 @@ function select_toile($conn, $id){
 	return $tab[0];
 }
 
-function select_toile_name($conn,$id){
-	$sql="SELECT `name` FROM 'toile' WHERE 'id'=$id";
+function select_toile_name($conn, $id){
+	$sql="SELECT `name` FROM `toile` WHERE `id`=$id";
 	global $debug;
 	if($debug){echo $sql;}
 	$res = mysqli_query($conn, $sql);
 	return $res;
+}
+
+function select_toiles_by_user_id($conn, $user_id){
+	$sql="SELECT DISTINCT toile.id, toile.name, toile.description, toile.id_creator, toile.hauteur, toile.largeur, toile.finished 
+		FROM `toile`
+		LEFT JOIN `toile_participants` ON toile.id = toile_participants.id_toile
+		WHERE toile.id_creator = $user_id OR toile_participants.id_user = $user_id";
+
+	global $debeug;
+	if($debeug) echo $sql; 
+	$res=mysqli_query($conn, $sql); 
+	return rs_to_tab_toile($res);
 }
 
 /**

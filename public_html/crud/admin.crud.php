@@ -2,9 +2,7 @@
 /*---------------------------------------
 CRUD: Gestion de l'entité admin
 ---------------------------------------*/
-$debug = true;
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
+$debug = false;
 
 /*
 	CR: créé un nouvel enregistrement  
