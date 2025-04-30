@@ -57,7 +57,7 @@ function select_admin_by_id($conn, $id){
 	global $debug;
 	if($debug){echo $sql;}
 	$res = mysqli_query($conn, $sql);
-	$tab = rs_to_tab_user($res);
+	$tab = rs_to_tab_admin($res);
 	return $tab[0];
 }
 
@@ -69,7 +69,7 @@ function get_admin_account($conn, $name, $pwd){
 	global $debug;
 	if($debug){echo $sql;}
 	$res = mysqli_query($conn, $sql);
-	$tab = rs_to_tab_user($res);
+	$tab = rs_to_tab_admin($res);
 
 	$user = [];
 	if($tab != []){
@@ -84,7 +84,7 @@ function name_existe_admin($conn, $name){
 	global $debug;
 	if($debug){echo $sql;}
 	$res = mysqli_query($conn, $sql);
-	$tab = rs_to_tab_user($res);
+	$tab = rs_to_tab_admin($res);
 
 	$existe = false;
 	if($tab != []){

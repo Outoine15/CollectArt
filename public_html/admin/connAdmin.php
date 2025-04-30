@@ -11,11 +11,10 @@ include("../DBconnect/db_connect.php");
 
 
 if(isset($_POST["login"]) && isset($_POST["passwd"])){
-	$session_data = is_in_DB_get_id($_POST["login"] , $_POST["passwd"] , $conn);
+	$session_data = get_admin_account($conn, $_POST["login"] , $_POST["passwd"]);
     print_r($session_data);
-    $estdansBDD = $session_data[0];
-    $id = $session_data[1];
-	if($estdansBDD==1){
+    $id = $session_data["id"];
+	if($$session_data==[]){
         echo "hello there";
         $_SESSION["id"]=$id;
         header("Location: index.php");

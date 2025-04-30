@@ -11,8 +11,8 @@ echo "
 
 <div class=\"nav-header-buttons\">
 <a href=\"../vote.php\">les votes?</a>
-<a href=\"~/toile_edit/toile_edit.php\">editer la toile</a>
-<a href=\"~/cree_toile.php\">créer une toile</a>
+<a href=\"../toile_edit/toile_edit.php\">editer la toile</a>
+<a href=\"../toile_cree/cree_toile.php\">créer une toile</a>
 </div>
 
 <div class=\"connection\">

@@ -143,18 +143,18 @@ function createDisplayToile(toile) {
 
 // Fonction pour charger les données JSON d'une toile
 function loadToileData(id) {
-    let toileData = [];
-    for (const i in listToiles) {
-        const toile = listToiles[i];
-        if(toile["id"]==id){
-            toileData=toile["0"];
-        }
-    }
+    // let toileData = [];
+    // for (const i in listToiles) {
+    //     const toile = listToiles[i];
+    //     if(toile["id"]==id){
+    //         toileData=toile["0"];
+    //     }
+    // }
     // console.log(toileData);
-    return toileData;
+    // return toileData;
 
     // just ça ca marche: (DO NOT TOUCH IT)
-    // return fetch("../toilesJSON/" + id + ".json").then(jsonToData);
+    return fetch("../toilesJSON/" + id + ".json").then(jsonToData);
 }
 
 // Convertit le contenu en json
@@ -171,19 +171,19 @@ function deleteChilds(div) {
 
 // Chargement asynchrone des données des toiles
 function loadToileDataAsync(id, hauteur, largeur) {
-    let pixelData = loadToileData(id)
-
-    //le problème c'est que si c'est pas dans un fetch ça casse tout:
-    // Mise à jour de mini toile
-    var previewElement = document.getElementById('preview-' + id);
-
-    if (previewElement) {
-        // Supprimer old mini toile
-        deleteChilds(previewElement);
-
-        // Ajouter mini toile mise à jour
-        console.log(pixelData);
-        var miniToile = createMiniToile(pixelData, hauteur, largeur);
-        previewElement.appendChild(miniToile);
-        }
+    loadToileData(id).then(pixelData => {
+        //le problème c'est que si c'est pas dans un fetch ça casse tout:
+        // Mise à jour de mini toile
+        var previewElement = document.getElementById('preview-' + id);
+        
+        if (previewElement) {
+            // Supprimer old mini toile
+            deleteChilds(previewElement);
+        
+            // Ajouter mini toile mise à jour
+            console.log(pixelData);
+            var miniToile = createMiniToile(pixelData, hauteur, largeur);
+            previewElement.appendChild(miniToile);
+            }
+    });
 }
