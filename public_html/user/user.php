@@ -30,6 +30,9 @@ include("../headerfooter/header.php");
     $user_name = $user["name"];
 
     echo $user_name;
+    echo "<p>";
+    echo "id: ";
+    echo $user_id+"</p>";
 
     ?>
     </h1>

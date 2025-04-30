@@ -50,6 +50,15 @@ function select_toile_participants($conn){
 	return rs_to_tab_toile_participants($res);
 }
 
+function select_toile_participants_toile($conn,$toile_id){
+	$sql="SELECT * FROM `toile_participants` WHERE `id_toile`=$toile_id";
+	global $debeug;
+	if($debeug) echo $sql; 
+	$res=mysqli_query($conn, $sql); 
+	return rs_to_tab_toile_participants($res);
+}
+
+
 /**
  * Fonction auxiliaire pour transformer un rs en tableau
  */
