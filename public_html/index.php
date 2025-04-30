@@ -1,9 +1,9 @@
 <?php
-session_start(); 
-if(isset($_GET["action"])){
+session_start();
+if (isset($_GET["action"])) {
 	$action = $_GET["action"];
-    
-	if($action=="disconnect"){
+
+	if ($action == "disconnect") {
 		unset($_SESSION["user"]);
 		unset($_SESSION["admin"]);
 	}
