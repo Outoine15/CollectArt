@@ -1,10 +1,6 @@
 <?php
 session_start();
-print_r($_SESSION);
-if (isset($_SESSION["admin_id"])) {
-    echo "bienvenue";
-} else{
-    echo "thats not good";
+if(!isset($_SESSION["admin_id"])) {
     header("Location: connAdmin.php");
 }
 
@@ -15,8 +11,8 @@ include("../DBconnect/db_connect.php");
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <script src="../dom/script.js"></script>
-    <link rel="stylesheet" href="../css/default.css">
+    <script src="../dom/script.admin.js"></script>
+    <link rel="stylesheet" href="../css/default.admin.css">
     <link rel="stylesheet" href="../css/style.css">
     <title>page admin</title>
 </head>
