@@ -14,7 +14,7 @@
 #form_container{
 	border: none;
 	border-radius: 10px;
-	padding: 30px;
+	padding: 35px;
 	margin: 20px 0;
 	max-width: 550px;
 	width: 100%;
@@ -23,25 +23,25 @@
 
 .form_title {
 	text-align: center;
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 	color: #1550bd;
 }
 
 .error_message {
     background-color: #ffeaed;
     color: red;
-    padding: 12px;
+    padding: 13px;
     border-radius: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-size: 0.95em;
 }
 
 .success_message {
     background-color: #e5f6e7;
     color: green;
-    padding: 12px;
+    padding: 13px;
     border-radius: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-size: 0.95em;
 }
 
@@ -84,7 +84,7 @@
     color: #1550bd;
     text-decoration: none;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 10px;
     font-size: 0.95em;
 }
 
@@ -102,14 +102,14 @@
 
 /* 
 ==========================
-INPUTS
+GESTION DES INPUTS
 ==========================
 */
 
 #formulaire input[type="submit"] {
     background-color: #1550bd;
     color: white;
-    padding: 12px;
+    padding: 10px;
     border: none;
     border-radius: 5px;
     font-size: 1em;
@@ -117,4 +117,20 @@ INPUTS
     cursor: pointer;
     width: 100%;
     margin-top: 10px;
+}
+
+#formulaire input[type="submit"]:hover{
+    background-color: #2020ff;
+}
+
+#formulaire input[type="submit"]:active{
+    transform: scale(0.99);
+}
+
+#formulaire input[type="text"], #formulaire input[type="password"]{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
 }

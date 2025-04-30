@@ -1,5 +1,3 @@
-
-
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -12,62 +10,45 @@ header {
     background-color: #1550bd;
     color: rgba(255, 255, 255, 0.925);
     padding: 0;
-    margin:0;
+    margin: 0;
 }
 
-nav {
-    font-size: larger;
-    justify-content: space-between;
+nav{
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.nav-title {
+    flex: 1;
+    text-align: left;
+    margin-left: 20px;
+}
+
+.nav-header-buttons{
+    flex: 2;
+    display: flex;
+    justify-content: center;
+}
+
+.connection{
+    flex: 1;
+    text-align: right;
+}
+
+.nav-title a, .nav-header-buttons a, .connection a{
+    color: white;
+    text-decoration: none;
     padding: 30px;
-    align-items: center;
-    margin: auto;
-    padding: auto;
-}
-
-.nav-title h1,.nav-header-buttons,.nav-title{
-    margin:auto;
-    padding:0;
-}
-.nav-title a{
-    left: 10px;
-    margin:  0;
-    padding: 30px 15px;
     transition: background-color 0.3s;
-    text-decoration: none;
-    align-items: center;
-    color: rgba(245, 245, 245, 0.945);
-    
-}
-.nav-header-buttons a {
-
-    align-items: center;
-    color: white;
-    text-decoration: none;
-    margin:  0;
-    padding: 30px 15px;
-    border: none;
-    transition: background-color 0.3s;
+    font-size: 1.4em;
 }
 
-.connection a{
-    right: 5px;
-    align-items: center;
-    color: white;
-    text-decoration: none;
-    margin:  10px;
-    padding: 30px 7px;
-    background-color: #1550bd;
-    border: none;
-    transition: background-color 0.3s;
-}
-
-nav a:hover {
+.nav-title a:hover, .nav-header-buttons a:hover, .connection a:hover{
     background-color: #2020ff;
 }
-.nav-title a:hover{
-    background-color: #2020ff;
-}
+
 #container{
     flex: 1;
 }
@@ -83,9 +64,6 @@ footer {
 	justify-content: space-between;
 }
 
-/* #div-image-univsmb{
-
-}	 */
 	
 #image-univsmb{
 	height:9%;	

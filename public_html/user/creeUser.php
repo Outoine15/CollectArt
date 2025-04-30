@@ -80,7 +80,7 @@ include("../headerfooter/header.php");?>
 
 						<div class="pwd_container">
 							<input type="checkbox" id="checkbox_pwd" onclick="passwordSeeHide('checkbox_pwd', 'user_pwd')">
-							<label for="checkbox_pwd">Afficher/Cacher le mot de passe</label>
+							<label for="checkbox_pwd">Afficher</label>
 						</div>
 					</div>
 
@@ -94,7 +94,7 @@ include("../headerfooter/header.php");?>
 
 						<div class="pwd_container">
 							<input type="checkbox" id="checkbox_pwd_confirmation" onclick="passwordSeeHide('checkbox_pwd_confirmation', 'user_pwd_confirmation')">
-							<label for="checkbox_pwd_confirmation">Afficher/Cacher le mot de passe</label>
+							<label for="checkbox_pwd_confirmation">Afficher</label>
 						</div>
 					</div>
 					

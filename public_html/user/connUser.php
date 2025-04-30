@@ -23,7 +23,11 @@ if(isset($_POST["user_name"]) && isset($_POST["user_pwd"])){
 		$_SESSION["user"] = $user["id"]; 
 		
 		/* redirection */
-		header("Location: user.php");
+		header("Location: ../pages/mes_toiles.php");
+	}
+}else if(isset($_GET["erreur_page"])){
+	if($_GET["erreur_page"] == "mes_toiles"){
+		$message_connexion .= "<p class='error_message'>Erreur : Vous devez être connecté pour visualiser vos toiles</p>";
 	}
 }
 
@@ -75,7 +79,7 @@ include("../headerfooter/header.php");
 
 						<div class="pwd_container">
 							<input type="checkbox" id="checkbox_pwd" onclick="passwordSeeHide('checkbox_pwd', 'user_pwd')">
-							<label for="checkbox_pwd">Afficher/Cacher le mot de passe</label>
+							<label for="checkbox_pwd">Afficher</label>
 						</div>
 					</div>
 						

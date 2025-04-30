@@ -6,13 +6,13 @@ echo "
 <nav>
 
 <div class=\"nav-title\">
-    <h1><a href=\"../index.php\">CollectArt</a></h1>
+    <h1>CollectArt</h1>
 </div>
 
 <div class=\"nav-header-buttons\">
-<a href=\"../vote.php\">les votes?</a>
-<a href=\"../toile_edit/toile_edit.php\">editer la toile</a>
-<a href=\"../toile_cree/cree_toile.php\">créer une toile</a>
+<a href=\"../index.php\">Accueil</a>
+<a href=\"../pages/mes_toiles.php\">Mes toiles</a>
+<a href=\"../toile_cree/cree_toile.php\">Créer une toile</a>
 </div>
 
 <div class=\"connection\">
