@@ -70,13 +70,16 @@ include("../headerfooter/header.php");
 				</div>
 
 				<div class="form_section">
-					<p class="form_txt">Mot de passe</p>
-					<input type="password" name="user_pwd" id="user_pwd">
+					<div class="form_header">
+						<p class="form_txt">Mot de passe</p>
 
-					<div class="pwd_container">
-						<input type="checkbox" id="checkbox_pwd" onclick="passwordSeeHide('checkbox_pwd', 'user_pwd')">
-						<label for="checkbox_pwd">Afficher/Cacher le mot de passe</label>
+						<div class="pwd_container">
+							<input type="checkbox" id="checkbox_pwd" onclick="passwordSeeHide('checkbox_pwd', 'user_pwd')">
+							<label for="checkbox_pwd">Afficher/Cacher le mot de passe</label>
+						</div>
 					</div>
+						
+					<input type="password" name="user_pwd" id="user_pwd">
 				</div>
 
 				<input type="submit" value="Se connecter">

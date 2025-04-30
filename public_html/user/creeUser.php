@@ -75,25 +75,30 @@ include("../headerfooter/header.php");?>
 				</div>
 
 				<div class="form_section">
-					<p class="form_txt">Mot de passe</p>
-					<input type="password" name="user_pwd" id="user_pwd">
+					<div class="form_header">
+						<p class="form_txt">Mot de passe</p>
 
-					<div class="pwd_container">
-						<input type="checkbox" id="checkbox_pwd" onclick="passwordSeeHide('checkbox_pwd', 'user_pwd')">
-						<label for="checkbox_pwd">Afficher/Cacher le mot de passe</label>
+						<div class="pwd_container">
+							<input type="checkbox" id="checkbox_pwd" onclick="passwordSeeHide('checkbox_pwd', 'user_pwd')">
+							<label for="checkbox_pwd">Afficher/Cacher le mot de passe</label>
+						</div>
 					</div>
 
+					<input type="password" name="user_pwd" id="user_pwd">
 					<p class="form_contrainte">8 caractères ou plus dont au moins : 1 majuscule, 1 minuscule et 1 chiffre</p>
 				</div>
 
 				<div class="form_section">
-					<p class="form_txt">Confirmez le mot de passe</p>
-					<input type="password" name="user_pwd_confirmation" id="user_pwd_confirmation">
+					<div class="form_header">
+						<p class="form_txt">Confirmez le mot de passe</p>
 
-					<div class="pwd_container">
-						<input type="checkbox" id="checkbox_pwd_confirmation" onclick="passwordSeeHide('checkbox_pwd_confirmation', 'user_pwd_confirmation')">
-						<label for="checkbox_pwd_confirmation">Afficher/Cacher le mot de passe</label>
+						<div class="pwd_container">
+							<input type="checkbox" id="checkbox_pwd_confirmation" onclick="passwordSeeHide('checkbox_pwd_confirmation', 'user_pwd_confirmation')">
+							<label for="checkbox_pwd_confirmation">Afficher/Cacher le mot de passe</label>
+						</div>
 					</div>
+					
+					<input type="password" name="user_pwd_confirmation" id="user_pwd_confirmation">
 				</div>
 
 				<input type="submit" value="Créer un compte">

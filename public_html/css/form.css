@@ -70,11 +70,9 @@
 }
 
 .pwd_container{
-    display: inline;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-size: 0.95em;
-    color: #333;
+    display: flex;
+    align-items: center;
+    color: #1550bd;
 }
 
 .pwd_container input[type="checkbox"]{
@@ -93,4 +91,30 @@
 #formulaire a:hover {
     color: #1818ff;
     text-decoration: underline;
+}
+
+.form_header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 5px;
+}
+
+/* 
+==========================
+INPUTS
+==========================
+*/
+
+#formulaire input[type="submit"] {
+    background-color: #1550bd;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
 }
