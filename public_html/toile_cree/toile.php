@@ -30,7 +30,7 @@ if(isset($_POST["nom"]) && isset($_POST["hauteur"]) && isset($_POST["largeur"]) 
     $largeur=$_POST["largeur"];
     $id_creator=0;
     if($hauteur > 100 || $largeur > 100){
-        echo "<div>toile trop grand, vous voullez tous casser ou quoi?</div>";
+        echo "<div>toile trop grand, vous voullez tous casser ou quoi? (max 100px hauteur/largeur)</div>";
     } else{
         if(isset($_SESSION["user"])){
             $id_creator=(int)$_SESSION["user"];
