@@ -7,13 +7,13 @@ $data = file_get_contents("php://input");
 
 // json_decode fait de la merde donc voila:
 $full_length = strlen($data);
-while ($data[-$i]!=",") { 
-    $i=$i+1;
+while ($data[-$i] != ",") {
+    $i = $i + 1;
     // ne fait que 2/3 boucles (délimite l'ID)
 }
 
-$filename=substr($data,-$i+1,-1);
-$pixelData=substr($data,-$full_length+1,$full_length-$i-1);
+$filename = substr($data, -$i + 1, -1);
+$pixelData = substr($data, -$full_length + 1, $full_length - $i - 1);
 // $pixelData=$data[0];
 // $filename=$data[1];
 // $pixelData=$data;
@@ -23,12 +23,13 @@ $pixelData=substr($data,-$full_length+1,$full_length-$i-1);
 //     $data=$_GET["data"];
 $path = "../toilesJSON/${filename}.json";
 // $str_json = file_get_contents('php://input');
-    save_json_toile($pixelData,$path);
+save_json_toile($pixelData, $path);
 // }
 
 // ça ca marche:
-function save_json_toile($toile_data,$filename){
+function save_json_toile($toile_data, $filename)
+{
     print_r($toile_data);
-    file_put_contents($filename,$toile_data);
+    file_put_contents($filename, $toile_data);
 }
 ?>

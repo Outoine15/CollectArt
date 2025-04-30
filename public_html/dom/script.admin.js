@@ -124,7 +124,7 @@ function createDisplayToile(toile) {
 
     var creatorName = document.createElement("p");
     creatorName.className = 'toile-creator';
-    creatorName.innerHTML = "creator id: "+toile["id_creator"];
+    creatorName.innerHTML = "creator id: " + toile["id_creator"];
 
     var detailsBtn = document.createElement('a');
     detailsBtn.href = "../toile_edit/toile_edit.php?id=" + toile["id"] + "&name=" + toile["name"] + "&hauteur=" + toile["hauteur"] + "&largeur=" + toile["largeur"];
@@ -186,15 +186,15 @@ function loadToileDataAsync(id, hauteur, largeur) {
         //le problème c'est que si c'est pas dans un fetch ça casse tout:
         // Mise à jour de mini toile
         var previewElement = document.getElementById('preview-' + id);
-        
+
         if (previewElement) {
             // Supprimer old mini toile
             deleteChilds(previewElement);
-        
+
             // Ajouter mini toile mise à jour
             console.log(pixelData);
             var miniToile = createMiniToile(pixelData, hauteur, largeur);
             previewElement.appendChild(miniToile);
-            }
+        }
     });
 }

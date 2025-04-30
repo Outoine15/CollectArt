@@ -175,15 +175,15 @@ function loadToileDataAsync(id, hauteur, largeur) {
         //le problème c'est que si c'est pas dans un fetch ça casse tout:
         // Mise à jour de mini toile
         var previewElement = document.getElementById('preview-' + id);
-        
+
         if (previewElement) {
             // Supprimer old mini toile
             deleteChilds(previewElement);
-        
+
             // Ajouter mini toile mise à jour
             console.log(pixelData);
             var miniToile = createMiniToile(pixelData, hauteur, largeur);
             previewElement.appendChild(miniToile);
-            }
+        }
     });
 }
