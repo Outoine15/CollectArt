@@ -38,6 +38,14 @@ if(!$member && !$creator && !$admin){
     header("Location: ../main/index.php");
 }
 
+// Participant quitte une toile
+if(isset($_POST["quitteToile"])){
+    $user_id = $_SESSION["user"];
+    $toile_id = $_GET["id"];
+
+    delete_toile_participants_user($conn, $toile_id, $user_id);
+    header("Location: ../pages/mes_toiles.php");
+}
 
 if(isset($_GET["remove"]) && isset($_GET["id"])){
     $user_id_remove = $_GET["remove"];
@@ -48,6 +56,32 @@ if(isset($_GET["remove"]) && isset($_GET["id"])){
     $message = "<p class='success_message'><strong>L'utilisateur " . $user_remove_name . " a été supprimé avec succès !</p>";
 
     delete_toile_participants_user($conn, $toile_id, $user_id_remove);
+}
+
+if(isset($_GET["action"]) && isset($_GET["id"])){
+    $id=$_GET["id"];
+    if($_GET["action"] == "demande"){
+        if(isset($_GET["accepte"])){
+            $accepte = $_GET["accepte"];
+            if(is_user_already_demande($conn, $id, $accepte)){
+                $user = select_user_by_id($conn, $accepte);
+                $username = $user["name"];
+
+                insert_toile_participants($conn, $id, $accepte);
+                delete_toile_demandes_user($conn, $id, $accepte);
+                $message = "<p class='success_message'>Vous avez accepté la demande de <strong>" . $username . "</strong> !</p>";
+            }
+        }else if(isset($_GET["refuse"])){
+            $refuse = $_GET["refuse"];
+            if(is_user_already_demande($conn, $id, $refuse)){
+                $user = select_user_by_id($conn, $refuse);
+                $username = $user["name"];
+
+                delete_toile_demandes_user($conn, $id, $refuse);
+                $message = "<p class='error_message'>Vous avez refusé la demande de <strong>" . $username . "</strong> !</p>";
+            }
+        }
+    }
 }
 
 if(isset($_POST["editParam"])){
@@ -138,6 +172,7 @@ if(isset($_GET["action"]) && isset($_GET["id"])){
     $toile_data = file_get_contents("../toilesJSON/$id.json");
     $_SESSION["toile_id"] = $id;
 
+    $creator = $toile["id_creator"];
     $creator_toile = $toile["creator_name"];
     $description = $toile["description"];
     $participants = select_user_participants_toile($conn, $id);
@@ -193,6 +228,14 @@ if(isset($_GET["action"]) && isset($_GET["id"])){
         ";
         echo "</script>\n";
 
+        if($_SESSION["user"] != $creator){
+            echo "
+            <form action='$url_infos' method='post' class='demande-participation'>\n
+                <input type='submit' value='Mettre fin à votre participation' class='submit1-form-param' name='quitteToile'>
+            </form>
+            ";
+        }
+
     }else if($action == "param"){
         echo "<div id='div_toile_nav'>\n
         <a href='$url_toile' class='nav_toile'>Afficher la toile</a>\n
@@ -201,7 +244,7 @@ if(isset($_GET["action"]) && isset($_GET["id"])){
         <a href='$url_demande' class='nav_toile'>Demandes de participation</a>\n
         </div>\n";
 
-        if($admin == false && $creator == false) {
+        if($_SESSION["user"] != $creator) {
             echo "
             <div class='error-not-creator'>\n
                 <p class='error-not-creator-text'><strong>Erreur : </strong>Seulement le créateur de la toile peut accéder aux paramètres</p>\n
@@ -231,7 +274,7 @@ if(isset($_GET["action"]) && isset($_GET["id"])){
         <a href='$url_demande' class='nav_toile active'>Demandes de participation</a>\n
         </div>\n";
 
-        if($admin == false && $creator == false) {
+        if($_SESSION["user"] != $creator) {
             echo "
             <div class='error-not-creator'>\n
                 <p class='error-not-creator-text'><strong>Erreur : </strong>Seulement le créateur de la toile peut accéder aux demandes de participation</p>\n
@@ -243,6 +286,8 @@ if(isset($_GET["action"]) && isset($_GET["id"])){
             echo "
             <script>
             var demandes = " . json_encode($demandes) . ";
+
+            createToileDemandes(`$message`, $id);
             </script>
             ";
         }
