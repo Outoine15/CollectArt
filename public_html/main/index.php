@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="../css/default.css">
 </head>
 <body>
-
 <?php
 include("../DBconnect/db_connect.php");
 include("../headerfooter/header.php");
@@ -25,7 +24,7 @@ $toiles=json_encode($toiles);
 // print_r($toiles);
 echo "<script>";
 echo "var listToiles = ${toiles};\n";
-echo "displayToiles()";
+echo "displayToiles('voir details')";
 echo "</script>";
 
 include("../headerfooter/footer.php");

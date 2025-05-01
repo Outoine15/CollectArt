@@ -82,7 +82,7 @@ $toiles=json_encode($toiles);
 echo "<script>";
 echo "var listToiles = ${toiles};\n";
 echo "var listMyToiles = [];\n";
-echo "displayToiles()";
+echo "displayToiles('modifier')";
 echo "</script>";
 ?>
 
