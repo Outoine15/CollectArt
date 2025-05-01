@@ -100,3 +100,25 @@ footer {
     font-weight: 700;
     margin-right: 10px;
 }
+
+textarea{
+    resize: none;
+}
+
+.error_message {
+    background-color: #ffeaed;
+    color: red;
+    padding: 13px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 0.95em;
+}
+
+.success_message {
+    background-color: #e5f6e7;
+    color: green;
+    padding: 13px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 0.95em;
+}
