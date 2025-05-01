@@ -25,11 +25,12 @@ function remove_user($conn,$id)
     delete_toile_creator($conn, $id);
     delete_user($conn, $id);
 
-
-
-    unset($_SESSION["user"]);
-
+    if($_GET["action"]=="from_admin"){
+        header("Location: ../admin/index.php?action=users");
+    } else{
+        unset($_SESSION["user"]);
+        header("Location: ../main/index.php");
+    }
 }
 include("../DBconnect/db_disconnect.php");
-header("Location: ../main/index.php");
 ?>

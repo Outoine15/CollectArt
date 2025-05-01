@@ -75,9 +75,8 @@ function displayUsers(){
     for (const i in listUsers) {
         user = listUsers[i];
         var infosContainer = createUserInfosContainer(user);
+        container.appendChild(infosContainer);
     }
-
-    container.appendChild(infosContainer);
 }
 
 // ============================
@@ -252,7 +251,7 @@ function createUserInfosContainer(user){
     divInfos.innerHTML = id;
     
     var deleteBtn = document.createElement("a");
-    deleteBtn.href = "../dom/json.delete.php?action=from_admin&id="+id;
+    deleteBtn.href = "../user/deletUser.php?action=from_admin&id="+id;
     deleteBtn.className = "";
     deleteBtn.innerHTML = "Supprimer";
     
@@ -369,7 +368,10 @@ function createParametresContainer(error){
     if(error != ""){
         paramContainer.innerHTML += error;
     }
-        
+    
+    var formContainer = document.createElement("div");
+    formContainer.className = "form-container";
+
     // Formulaire
     var form = document.createElement("form");
     form.action = "toile_edit.php?action=param&id=" + id;
@@ -395,7 +397,6 @@ function createParametresContainer(error){
     submit1.name = "editParam";
 
     form.appendChild(submit1);
-    paramContainer.appendChild(form);
 
     // FORM 2 : Partie Participants
     var form2 = document.createElement("form");
@@ -414,7 +415,9 @@ function createParametresContainer(error){
 
     form2.appendChild(submit2);
 
-    paramContainer.appendChild(form2);
+    formContainer.appendChild(form);
+    formContainer.appendChild(form2);
+    paramContainer.appendChild(formContainer);
 
     var delete_toile = document.createElement("a");
     delete_toile.className = "delete-toile-button";

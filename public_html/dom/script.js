@@ -212,7 +212,7 @@ function editButton(toile) {
 
 function deleteButton(toile) {
     var btn = document.createElement("a");
-    btn.href = "../dom/json.delete.php?id=" + toile["id"];
+    btn.href = "../dom/json.delete.php?action=from_admin&id=" + toile["id"];
     btn.className = "toile-delete-btn";
     btn.innerHTML = "Supprimer";
 

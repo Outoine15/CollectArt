@@ -12,9 +12,11 @@ include("../DBconnect/db_connect.php");
 <head>
     <meta charset="UTF-8">
     <script src="../dom/script.js"></script>
+    <script src="../dom/dom.js"></script>
     <link rel="stylesheet" href="../css/default.admin.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/page_toile.css">
+    <link rel="stylesheet" href="../css/toile.css">
     <title>page admin</title>
 </head>
 <body>
@@ -52,9 +54,7 @@ if(isset($_GET["action"])){
         echo "var listToiles = ${toiles};\n";
         echo "displayToiles('supprimer')";
         echo "</script>";
-    }
-
-    if($action=="users"){
+    }else if($action=="users"){
 
         echo "<div id='div_toile_nav'>\n
         <a href='$url_toiles' class='nav_toile'>Toiles</a>\n
@@ -71,6 +71,11 @@ if(isset($_GET["action"])){
         echo "var listUsers = ${users};\n";
         echo "displayUsers();\n";
         echo "</script>;\n";
+    } else {
+        echo "<div id='div_toile_nav'>\n
+        <a href='$url_toiles' class='nav_toile'>Toiles</a>\n
+        <a href='$url_users' class='nav_toile'>Utilisateurs</a>\n
+        </div>\n";
     }
 }
 

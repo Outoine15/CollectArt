@@ -6,7 +6,7 @@ include("../crud/toile.crud.php");
 
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
-
+print_r($_SESSION);
 if((isset($_SESSION["user"]) || isset($_SESSION["admin_id"])) && isset($_GET["id"]) && isset($_GET["action"])){
     $id=$_GET["id"];
     if(isset($_SESSION["admin_id"])){
@@ -31,7 +31,7 @@ function delete_toile_total($id,$conn){
     if($_GET["action"]=="from_user"){
         header("Location: ../pages/mes_toiles.php");    
     } else if($_GET["action"]=="from_admin"){
-        header("Location: ../admin/index.php");
+        header("Location: ../admin/index.php?action=toiles");
     }
 }
 
