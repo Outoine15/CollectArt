@@ -8,9 +8,8 @@ $debug = false;
 	CR: créé un nouvel enregistrement  
 	suppose un id auto-incrementé
 */
-function insert_toile($conn, $name, $description, $id_creator, $hauteur, $largeur, $finished)
-{
-	$sql = "INSERT INTO `toile`(`name`, `description`, `id_creator`, `hauteur`, `largeur`, `finished`) value('$name', '$description', $id_creator, $hauteur, $largeur, $finished)";
+function insert_toile($conn, $name, $description, $id_creator, $creator_name, $hauteur, $largeur, $finished){
+	$sql="INSERT INTO `toile`(`name`, `description`, `id_creator`, `creator_name`, `hauteur`, `largeur`, `finished`) value('$name', '$description', $id_creator, '$creator_name', $hauteur, $largeur, $finished)";
 	global $debug;
 	if ($debug) {
 		echo $sql;
@@ -32,9 +31,8 @@ function get_last_inserted_id($conn)
 /*
 	U: met à jour les valeurs de l'enregistrement 
 */
-function update_toile($conn, $id, $name, $description, $id_creator, $hauteur, $largeur, $finished)
-{
-	$sql = "UPDATE `toile` set `name`='$name', `description`='$description', `id_creator`=$id_creator, `hauteur`=$hauteur, `largeur`=$largeur, `finished`=$finished WHERE `id`=$id";
+function update_toile($conn, $id, $name, $description, $id_creator, $creator_name, $hauteur, $largeur, $finished){
+	$sql="UPDATE `toile` set `name`='$name', `description`='$description', `id_creator`=$id_creator, `creator_name`=$creator_name, `hauteur`=$hauteur, `largeur`=$largeur, `finished`=$finished WHERE `id`=$id";
 	global $debug;
 	if ($debug) {
 		echo $sql;
@@ -94,9 +92,8 @@ function select_toile_name($conn, $id)
 	return $res;
 }
 
-function select_toiles_by_user_id($conn, $user_id)
-{
-	$sql = "SELECT DISTINCT toile.id, toile.name, toile.description, toile.id_creator, toile.hauteur, toile.largeur, toile.finished 
+function select_toiles_by_user_id($conn, $user_id){
+	$sql="SELECT DISTINCT toile.id, toile.name, toile.description, toile.id_creator, toile.creator_name, toile.hauteur, toile.largeur, toile.finished 
 		FROM `toile`
 		LEFT JOIN `toile_participants` ON toile.id = toile_participants.id_toile
 		WHERE toile.id_creator = $user_id OR toile_participants.id_user = $user_id";

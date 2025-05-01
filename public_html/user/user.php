@@ -31,7 +31,10 @@ if (!$_SESSION["user"]) {
             $user = select_user_by_id($conn, $user_id);
             $user_name = $user["name"];
 
-            echo $user_name;
+    echo $user_name;
+    echo "<p>";
+    echo "id: ";
+    echo $user_id+"</p>";
 
             ?>
         </h1>

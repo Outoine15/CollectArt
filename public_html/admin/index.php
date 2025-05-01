@@ -12,7 +12,7 @@ include("../DBconnect/db_connect.php");
 
 <head>
     <meta charset="UTF-8">
-    <script src="../dom/script.admin.js"></script>
+    <script src="../dom/script.js"></script>
     <link rel="stylesheet" href="../css/default.admin.css">
     <link rel="stylesheet" href="../css/style.css">
     <title>page admin</title>
@@ -31,14 +31,14 @@ include("../DBconnect/db_connect.php");
         <div id="toiles-container"></div>
     </div>
 
-    <?php
-    $toiles = select_toiles($conn);
-    $toiles = json_encode($toiles);
-    // print_r($toiles);
-    echo "<script>";
-    echo "var listToiles = ${toiles};\n";
-    echo "displayToiles()";
-    echo "</script>";
+<?php
+$toiles=select_toiles($conn);
+$toiles=json_encode($toiles);
+// print_r($toiles);
+echo "<script>";
+echo "var listToiles = ${toiles};\n";
+echo "displayToiles('supprimer')";
+echo "</script>";
 
     include("../headerfooter/footer.php");
 

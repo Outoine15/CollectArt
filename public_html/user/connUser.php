@@ -16,18 +16,18 @@ if (isset($_POST["user_name"]) && isset($_POST["user_pwd"])) {
 
 	$user = get_user_account($conn, $name, $pwd);
 
-	if ($user == []) {
-		$message_connexion .= "<p class='error_message'>Erreur : Identifiant et/ou mot de passe invalide</p>";
-	} else {
+    if($user == []){
+		$message_connexion .= "<p class='error_message'><strong>Erreur :</strong> Identifiant et/ou mot de passe invalide</p>";
+	}else{
 		/* session user */
 		$_SESSION["user"] = $user["id"];
 
 		/* redirection */
 		header("Location: ../pages/mes_toiles.php");
 	}
-} else if (isset($_GET["erreur_page"])) {
-	if ($_GET["erreur_page"] == "mes_toiles") {
-		$message_connexion .= "<p class='error_message'>Erreur : Vous devez être connecté pour visualiser vos toiles</p>";
+}else if(isset($_GET["erreur_page"])){
+	if($_GET["erreur_page"] == "mes_toiles"){
+		$message_connexion .= "<p class='error_message'><strong>Erreur :</strong> Vous devez être connecté pour visualiser vos toiles</p>";
 	}
 }
 

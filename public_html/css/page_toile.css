@@ -1,0 +1,107 @@
+#container {
+    margin: 35px 0;
+}
+
+/* 
+==========================
+TOILE : Navigation
+==========================
+*/
+
+#div_toile_nav{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #ddd;
+}
+
+.nav_toile {
+    color: #555;
+    text-decoration: none;
+    padding: 10px 25px;
+    font-size: 1.3em;
+    transition: all 0.3s ease;
+}
+
+.nav_toile:hover {
+    color: #1550bd;
+}
+
+.nav_toile.active {
+    color: #1550bd;
+    font-weight: 700;
+}
+
+/* 
+==========================
+TOILE : Informations
+==========================
+*/
+
+#infos-container{
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+}
+
+#infos-container h1{
+    color: #1550bd;
+    font-size: 2.2em;
+    margin-bottom: 25px;
+    text-align: center;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 15px;
+}
+
+#infos-container p{
+    font-size: 1.2em;
+    margin: 10px 0;
+    color: #222;
+    line-height: 1.5;
+}
+
+#infos-container strong{
+    font-weight: 600;
+    color: #1550bd;
+}
+
+#div-participants {
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 2px solid #ddd;
+}
+
+.participants-list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.participant-p{
+    color: #1550bd;
+    background-color: #dce5f8;
+    border-radius: 30px;
+    padding: 5px 15px;
+    display: inline-block;
+    font-size: 0.9em;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.infos-desc{
+    margin: 20px 0;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    border-left: 5px solid #1550bd;
+}
+
+.noparticipants{
+    background-color: #ffeaed;
+    color: red;
+    padding: 13px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 0.95em;
+}

@@ -81,12 +81,12 @@ if (!isset($_SESSION["user"])) {
 
     $toiles = json_encode($toiles);
 
-    echo "<script>";
-    echo "var listToiles = ${toiles};\n";
-    echo "var listMyToiles = [];\n";
-    echo "displayToiles()";
-    echo "</script>";
-    ?>
+echo "<script>";
+echo "var listToiles = ${toiles};\n";
+echo "var listMyToiles = [];\n";
+echo "displayToiles('modifier')";
+echo "</script>";
+?>
 
     <?php
     include("../headerfooter/footer.php");
