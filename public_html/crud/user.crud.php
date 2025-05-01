@@ -67,6 +67,15 @@ function select_user_by_id($conn, $id){
 	return $tab[0];
 }
 
+function select_user_by_name($conn, $name){
+	$sql="SELECT * FROM `user` WHERE `name`='$name'";
+	global $debug;
+	if($debug){echo $sql;}
+	$res = mysqli_query($conn, $sql);
+	$tab = rs_to_tab_user($res);
+	return $tab[0];
+}
+
 function select_user_participants_toile($conn, $id_toile){
 	$sql = "SELECT DISTINCT user.id, user.name FROM `user`
 			JOIN `toile_participants` ON user.id = toile_participants.id_user

@@ -27,7 +27,7 @@ function get_last_inserted_id($conn){
 	U: met à jour les valeurs de l'enregistrement 
 */
 function update_toile($conn, $id, $name, $description, $id_creator, $creator_name, $hauteur, $largeur, $finished){
-	$sql="UPDATE `toile` set `name`='$name', `description`='$description', `id_creator`=$id_creator, `creator_name`=$creator_name, `hauteur`=$hauteur, `largeur`=$largeur, `finished`=$finished WHERE `id`=$id";
+	$sql="UPDATE `toile` set `name`='$name', `description`='$description', `id_creator`=$id_creator, `creator_name`='$creator_name', `hauteur`=$hauteur, `largeur`=$largeur, `finished`=$finished WHERE `id`=$id";
 	global $debug;
 	if($debug){echo $sql;} 
 	$ret=mysqli_query($conn, $sql);
