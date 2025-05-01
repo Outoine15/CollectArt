@@ -14,6 +14,7 @@ if(!$_SESSION["user"]){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/page_user.css">
     <link rel="stylesheet" href="../css/default.css">
     <title>Se connecter</title>
 </head>
@@ -23,8 +24,10 @@ include("../headerfooter/header.php");
 ?>
 
 <div id="container">
-    <h1>Bonjour 
-    <?php
+    <div id="bonjour_pannel"><h1>Bonjour 
+    
+	
+	<?php
     $user_id = $_SESSION["user"];
     $user = select_user_by_id($conn, $user_id);
     $user_name = $user["name"];
@@ -35,13 +38,19 @@ include("../headerfooter/header.php");
     echo $user_id+"</p>";
 
     ?>
-    </h1>
+	
+	
+    </h1></div>
     <div class="page_user">
         <div class='user_section'>
-            <h2>Fin de session</h2>
+           
+		   <div id="bloc-fin-session">
+		   <h2>Fin de session</h2>
             <a href="../index.php?action=disconnect">
             <button class='bouton_deconnexion'>Déconnexion</button>
             </a>
+			</div>
+			
             <h2>Suppression du compte</h2>
             <a
             <?php
@@ -51,6 +60,7 @@ include("../headerfooter/header.php");
             >
             <button class="bouton_delet_user">Suprimer</button>
             </a>
+			
         </div>
     </div>
 </div>
