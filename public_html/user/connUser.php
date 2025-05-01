@@ -28,6 +28,10 @@ if(isset($_POST["user_name"]) && isset($_POST["user_pwd"])){
 }else if(isset($_GET["erreur_page"])){
 	if($_GET["erreur_page"] == "mes_toiles"){
 		$message_connexion .= "<p class='error_message'><strong>Erreur :</strong> Vous devez être connecté pour visualiser vos toiles</p>";
+	}else if($_GET["erreur_page"] == "toile_details"){
+		$message_connexion .= "<p class='error_message'><strong>Erreur :</strong> Vous devez être connecté pour demander à participer à une toile</p>";
+	}else if($_GET["erreur_page"] == "cree_toile"){
+		$message_connexion .= "<p class='error_message'><strong>Erreur :</strong> Vous devez être connecté créer une toile</p>";
 	}
 }
 

@@ -1,6 +1,6 @@
 <?php session_start();
 if (!isset($_SESSION["user"])) {
-    header("Location: ../user/connUser.php");
+    header("Location: ../user/connUser.php?erreur_page=cree_toile");
 } ?>
 
 <!DOCTYPE html>

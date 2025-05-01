@@ -3,6 +3,18 @@ include("../DBconnect/db_connect.php");
 include("../crud/toile.crud.php");
 include("../crud/toile_participants.crud.php");
 include("../crud/user.crud.php");
+
+$message = "";
+
+session_start();
+if(isset($_POST["demandeParticiper"])){
+    if(isset($_SESSION["user"])){
+        $message = "<p class='success_message'>Demande effectuée avec succès !</p>";
+    }else {
+        header("Location: ../user/connUser.php?erreur_page=toile_details");
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +41,7 @@ ini_set('display_errors', '1');
 
 if(isset($_GET["action"]) && isset($_GET["id"])){
     $action = $_GET["action"];
-    $id=$_GET["id"];
+    $id = $_GET["id"];
 
     $toile = select_toile($conn, $id);
 
@@ -37,7 +49,7 @@ if(isset($_GET["action"]) && isset($_GET["id"])){
     $hauteur = $toile["hauteur"];
     $largeur = $toile["largeur"];
     $toile_data = file_get_contents("../toilesJSON/$id.json");
-    $_SESSION["toile_id"]=$id;
+    $_SESSION["toile_id"] = $id;
 
     $url_toile = "toile_details.php?action=toile&id=$id";
     $url_infos = "toile_details.php?action=informations&id=$id";
@@ -86,6 +98,15 @@ if(isset($_GET["action"]) && isset($_GET["id"])){
         createToileInformations();
         ";
         echo "</script>\n";
+
+        echo "<div class='container-message'>";
+        echo $message;
+        echo "
+        <form action='$url_infos' method='post' class='demande-participation'>\n
+            <input type='submit' value='Demander à participer' class='submit1-form-param' name='demandeParticiper'>
+        </form>
+        ";
+        echo "</div>";
 
     }
 
