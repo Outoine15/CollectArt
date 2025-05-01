@@ -28,10 +28,8 @@ function delete_toile_total($id,$conn){
 
     include("../DBconnect/db_disconnect.php");
 
-    
     if($_GET["action"]=="from_user"){
-        header("Location: ../pages/mes_toiles.php");   
-
+        header("Location: ../pages/mes_toiles.php");    
     } else if($_GET["action"]=="from_admin"){
         header("Location: ../admin/index.php");
     }

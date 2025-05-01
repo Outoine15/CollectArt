@@ -27,18 +27,20 @@ include("../headerfooter/header.php");
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
-// ça marche si ya beaucoup de data dans la db json on dirait donc poser pas trop de questions
-if(isset($_GET["action"]) && isset($_GET["id"]) && isset($_GET["name"]) && isset($_GET["hauteur"]) && isset($_GET["largeur"])){
+if(isset($_GET["action"]) && isset($_GET["id"])){
     $action = $_GET["action"];
     $id=$_GET["id"];
-    $nom=$_GET["name"];
-    $hauteur=$_GET["hauteur"];
-    $largeur=$_GET["largeur"];
-    $toile_data=file_get_contents("../toilesJSON/$id.json");
+
+    $toile = select_toile($conn, $id);
+
+    $nom = $toile["name"];
+    $hauteur = $toile["hauteur"];
+    $largeur = $toile["largeur"];
+    $toile_data = file_get_contents("../toilesJSON/$id.json");
     $_SESSION["toile_id"]=$id;
 
-    $url_toile = "toile_details.php?action=toile&id=$id&name=$nom&hauteur=$hauteur&largeur=$largeur";
-    $url_infos = "toile_details.php?action=informations&id=$id&name=$nom&hauteur=$hauteur&largeur=$largeur";
+    $url_toile = "toile_details.php?action=toile&id=$id";
+    $url_infos = "toile_details.php?action=informations&id=$id";
 
     if($action == "toile") {
         echo "<div id='div_toile_nav'>\n
@@ -67,7 +69,6 @@ if(isset($_GET["action"]) && isset($_GET["id"]) && isset($_GET["name"]) && isset
         <a href='$url_infos' class='nav_toile active'>Informations de la toile</a>\n
         </div>\n";
 
-        $toile = select_toile($conn, $id);
         $creator = $toile["creator_name"];
         $description = $toile["description"];
         $participants = select_user_participants_toile($conn, $id);
@@ -98,26 +99,6 @@ if(isset($_GET["action"]) && isset($_GET["id"]) && isset($_GET["name"]) && isset
 <?php
 include("../headerfooter/footer.php");
 ?>
-
-<script>
-
-var navBtns = document.querySelectorAll(".nav_toile");
-for(let navBtn of navBtns){
-    navBtn.addEventListener("click", function(e){
-        // On fait la redirection de la page à la fin pour éviter un bug stupide
-        e.preventDefault();
-
-        for(let navBtn2 of navBtns){
-            navBtn2.className = "nav_toile";
-        }
-
-        navBtn.className = "nav_toile active";
-
-        window.location.href = navBtn.href;
-    });
-}
-
-</script>
 
 </body>
 </html>

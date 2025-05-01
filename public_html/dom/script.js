@@ -194,7 +194,7 @@ function loadToileDataAsync(id, hauteur, largeur) {
 
 function detailsButton(toile) {
     var btn = document.createElement("a");
-    btn.href = "../pages/toile_details.php?action=toile&id=" + toile["id"] + "&name=" + toile["name"] + "&hauteur=" + toile["hauteur"] + "&largeur=" + toile["largeur"];
+    btn.href = "../pages/toile_details.php?action=toile&id=" + toile["id"];
     btn.className = "toile-details-btn";
     btn.innerHTML = "Voir détails";
 
@@ -203,7 +203,7 @@ function detailsButton(toile) {
 
 function editButton(toile) {
     var btn = document.createElement("a");
-    btn.href = "../toile_edit/toile_edit.php?action=toile&id=" + toile["id"] + "&name=" + toile["name"] + "&hauteur=" + toile["hauteur"] + "&largeur=" + toile["largeur"];
+    btn.href = "../toile_edit/toile_edit.php?action=toile&id=" + toile["id"];
     btn.className = "toile-edit-btn";
     btn.innerHTML = "Modifier";
 
