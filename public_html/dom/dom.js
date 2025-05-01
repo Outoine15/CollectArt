@@ -252,7 +252,7 @@ function createUserInfosContainer(user){
     
     var deleteBtn = document.createElement("a");
     deleteBtn.href = "../user/deletUser.php?action=from_admin&id="+id;
-    deleteBtn.className = "";
+    deleteBtn.className = "toile-delete-btn";
     deleteBtn.innerHTML = "Supprimer";
     
     infosContainer.appendChild(divInfos);

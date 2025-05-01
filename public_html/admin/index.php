@@ -30,8 +30,6 @@ include("../crud/user.crud.php");
 
 <div id="container">
 <a id="deconnection" href="deconnAdmin.php">déconnexion</a>
-<div id="toiles-container"></div>
-</div>
 
 <?php
 if(isset($_GET["action"])){
@@ -48,6 +46,8 @@ if(isset($_GET["action"])){
         <a href='$url_users' class='nav_toile'>Utilisateurs</a>\n
         </div>\n";
 
+        echo "<div id='toiles-container'></div>";
+
         $toiles=select_toiles($conn);
         $toiles=json_encode($toiles);
         echo "<script>";
@@ -60,6 +60,8 @@ if(isset($_GET["action"])){
         <a href='$url_toiles' class='nav_toile'>Toiles</a>\n
         <a href='$url_users' class='nav_toile active'>Utilisateurs</a>\n
         </div>\n";
+
+        echo "<div id='toiles-container'></div>";
 
         $users=select_user_no_pwd($conn);
         $users_cleaned=[];
@@ -76,6 +78,9 @@ if(isset($_GET["action"])){
         <a href='$url_toiles' class='nav_toile'>Toiles</a>\n
         <a href='$url_users' class='nav_toile'>Utilisateurs</a>\n
         </div>\n";
+
+        echo "<div id='toiles-container'></div>";
+
     }
 }
 
@@ -83,6 +88,7 @@ include("../headerfooter/footer.php");
 
 include("../DBconnect/db_disconnect.php");
 ?>
+</div>
 
 </body>
 </html>

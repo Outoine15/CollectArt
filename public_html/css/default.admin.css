@@ -1,5 +1,5 @@
 html {
-    background-color:black ;
+    background-color:white;
 }
 body {
     margin: 0;
@@ -37,9 +37,9 @@ nav{
 
 #container #deconnection {
     text-decoration: none;
-    color: rgb(160, 18, 18);
+    color: rgb(119, 2, 2);
     margin-left: 20px;
-    background-color:#420303be;
+    background-color:rgb(255, 0, 0);
     padding: 10px;
     border-radius: 30%;
     justify-content: center;
