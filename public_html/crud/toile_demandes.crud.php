@@ -46,6 +46,14 @@ function delete_toile_demandes_user($conn, $id_toile, $id_user){
 	return $ret; 
 }
 
+function delete_toile_demandes_user_all($conn, $id_user){
+	$sql="DELETE FROM `toile_demandes` WHERE `id_user`=$id_user";
+	global $debug;
+	if($debug){echo $sql;} 
+	$ret=mysqli_query($conn, $sql);
+	return $ret; 
+}
+
 /*
 	S: selectionne tous les toile_demandess
 */
