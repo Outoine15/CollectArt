@@ -224,3 +224,31 @@ TOILE : Paramètres
 .add-participant-form{
     margin-top: 15px;
 }
+
+.delete-toile-button{
+    display: block;
+    text-align: center;
+    margin: 20px auto;
+    margin-top: 60px;
+    padding: 10px 20px;
+    background-color: #e74c3c;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 1.1em;
+    transition: all 0.5s ease;
+    max-width: 150px;
+    font-weight: 700;
+}
+
+.delete-toile-button:hover {
+    background-color: #c0392b;
+    transform: scale(0.95);
+}
+
+.form-container{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-direction: column;
+}
