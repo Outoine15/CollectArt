@@ -1,0 +1,28 @@
+#bonjour_pannel {
+	border: solid 3px #0818A8;
+    border-radius: 10px;
+    margin: 10px;
+    max-width: 400px;
+    width: 100%;
+	text-align: center;
+}
+#container{
+	flex:1;
+	display:flex;
+	flex-direction: column;
+    align-items: center;
+}
+.user_section{
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+}
+#bloc-fin-session{
+	margin-bottom:20px;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+}
+.bouton_deconnexion{
+	background-color:black;
+}
