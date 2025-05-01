@@ -20,27 +20,43 @@
 function make_toile(use=""){
     // Création de la toile
 
-    toile = create_toile();
-    if(use!="create"){
-        document.body.appendChild(toile);
+    toile = create_toile(use);
 
-        // Gestionnaire des événements
-        setupEventListeners();
+    if(use != "create"){
+        var container = document.querySelector("#container");
+        container.appendChild(toile);
+
+        if(use != "Voir détails"){
+            // Gestionnaire des événements
+            setupEventListeners();
+        }
     }
 }
 
 // Création de la toile
-function create_toile(){
+function create_toile(use){
     var toile = document.createElement("div");
     toile.className = "toile";
 
     // Création de la zone de dessin
     var pixel_toile = create_pixel_toile(toile_status["hauteur"],toile_status["largeur"]);
-    var palette = create_palette();
-
     toile.appendChild(pixel_toile);
-    toile.appendChild(palette);
+
+    if(use != "Voir détails") {
+        var palette = create_palette();
+        toile.appendChild(palette);
+    }
+
     return toile;
+}
+
+// Crée les informations de la toile
+function createToileInformations(){
+    var container = document.querySelector("#container");
+
+    var infosContainer = createInfosContainer();
+
+    container.appendChild(infosContainer);
 }
 
 
@@ -198,6 +214,91 @@ function setupEventListeners(){
     // Sauvegarder le dessin
     document.querySelector("#button_save_toile").addEventListener("click", send_json_data_for_save);
     
+}
+
+// Crée le conteneur des informations de la toile
+function createInfosContainer(){
+    var infosContainer = document.createElement("div");
+    infosContainer.id = "infos-container";
+
+    var name = toile_informations["name"];
+    var creator = toile_informations["creator"];
+    var hauteur = toile_informations["hauteur"];
+    var largeur = toile_informations["largeur"];
+    var description = toile_informations["description"];
+    var participants = toile_informations["participants"];
+
+    // Titre de la toile
+    var h1 = document.createElement("h1");
+    h1.innerHTML = name;
+    infosContainer.appendChild(h1);
+
+    var divInfos = document.createElement("div");
+    divInfos.className = "infos-div";
+
+    // Créateur de la toile
+    var pCreator = document.createElement("p");
+    pCreator.innerHTML = "<strong>Créateur :</strong> " + creator;
+
+    // Dimensions de la toile
+    var pDimensions = document.createElement("p");
+    pDimensions.innerHTML = "<strong>Dimensions : </strong>" + hauteur + " x " + largeur;
+
+    divInfos.appendChild(pCreator);
+    divInfos.appendChild(pDimensions);
+
+    infosContainer.appendChild(divInfos);
+
+    // Description
+    var divDesc = document.createElement("div");
+    divDesc.className = "infos-desc";
+
+    var descTitle = document.createElement("h3");
+    descTitle.innerHTML = "Description";
+
+    var desc = document.createElement("p");
+    desc.innerHTML = description;
+
+    divDesc.appendChild(descTitle);
+    divDesc.appendChild(desc);
+    
+    infosContainer.appendChild(divDesc);
+
+    // Participants
+    var divParticipants = document.createElement("div");
+    divParticipants.id = "div-participants";
+
+    var participantsTitle = document.createElement("h2");
+    participantsTitle.innerHTML = "Participants";
+
+    divParticipants.appendChild(participantsTitle);
+
+    var participantsList = document.createElement("div");
+    participantsList.className = "participants-list";
+
+    if(participants.length > 0){
+        for(let i in participants){
+            let user = participants[i];
+            let username = user["name"];
+            
+            let p = document.createElement("p");
+            p.innerHTML = username;
+            p.className = "participant-p";
+    
+            participantsList.appendChild(p);
+        }
+    }else {
+        let noParticipants = document.createElement("p");
+        noParticipants.className = "noparticipants";
+        noParticipants.innerHTML = "Il n'y a pas de participants supplémentaire à cette toile";
+
+        participantsList.appendChild(noParticipants);
+    }
+
+    divParticipants.appendChild(participantsList);
+    infosContainer.appendChild(divParticipants);
+
+    return infosContainer;
 }
 
 // ============================ 
@@ -446,4 +547,3 @@ function edit_toile_json(json_data){
         }       
     }
 }
-
