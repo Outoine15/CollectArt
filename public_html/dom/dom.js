@@ -59,13 +59,22 @@ function createToileInformations(){
     container.appendChild(infosContainer);
 }
 
-
+// Crée le DOM de la page paramètres d'une toile
 function createToileParametres(error){
     var container = document.querySelector("#container");
 
-    var infosContainer = createParametresContainer(error);
+    var paramContainer = createParametresContainer(error);
 
-    container.appendChild(infosContainer);
+    container.appendChild(paramContainer);
+}
+
+// Crée le DOM de la page de traitement de demandes de participation à une toile
+function createToileDemandes(message, id){
+    var container = document.querySelector("#container");
+
+    var demandeContainer = createDemandesContainer(message, id);
+
+    container.appendChild(demandeContainer);
 }
 
 // pour supprimer les utilisateur dans la page admin
@@ -429,6 +438,61 @@ function createParametresContainer(error){
     return paramContainer;
 }
 
+// Crée le conteneur de traitement de demandes de participation
+function createDemandesContainer(message, id){
+    var demandesContainer = document.createElement("div");
+    demandesContainer.id = "demandes-container";
+
+    var title = document.createElement("h1");
+    title.innerHTML = "Gestion des demandes de participation";
+    demandesContainer.appendChild(title);
+
+    var tableContainer = document.createElement("div");
+    tableContainer.className = "table-container-demandes";
+
+    if(message != "") {
+        tableContainer.innerHTML += message;
+    }
+
+    var table = document.createElement("table");
+    table.className = "table-demandes";
+
+    if(demandes.length > 0){
+        for(let i in demandes){
+            let demande = demandes[i];
+            let user_id = demande["id"];
+    
+            let tr = document.createElement("tr");
+    
+            let td1 = document.createElement("td");
+            td1.innerHTML = demande["name"];
+    
+            let td2 = document.createElement("td");
+            td2.appendChild(btnAccepteDemande(id, user_id));
+    
+            let td3 = document.createElement("td");
+            td3.appendChild(btnRefuseDemande(id, user_id));
+    
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            tr.appendChild(td3);
+    
+            table.appendChild(tr);
+        }
+    }else {
+        let h2 = document.createElement("h2");
+        h2.innerHTML = "Vous n'avez aucune demande de participation en cours";
+
+        table.appendChild(h2);
+    }
+
+    
+    tableContainer.appendChild(table);
+    demandesContainer.appendChild(tableContainer);
+
+    return demandesContainer;
+}
+
 // ============================ 
 // 3. FONCTIONS UTILITAIRES
 // ============================
@@ -680,6 +744,26 @@ function get_save_toile_button(){
     return button;
 }
 
+// Renvoie le bouton qui permet d'accepter une demande de participation
+function btnAccepteDemande(id, user_id){
+    var a = document.createElement("a");
+    a.innerHTML = "Accepter";
+    a.className = "btn-demande accepter";
+    a.href = "toile_edit.php?action=demande&id=" + id + "&accepte=" + user_id;
+
+    return a;
+}
+
+// Renvoie le bouton qui permet de refuser une demande de participation
+function btnRefuseDemande(id, user_id){
+    var a = document.createElement("a");
+    a.innerHTML = "Refuser";
+    a.className = "btn-demande refuser";
+    a.href = "toile_edit.php?action=demande&id=" + id + "&refuse=" + user_id;
+
+    return a;
+}
+
 // Modification d'un pixel sur le dessin à partir d'un click
 function click_dessin(e){
     var target = e.target;
@@ -835,7 +919,7 @@ function send_json_data_for_save(){
     var data = JSON.stringify(toile_status["pixelData"]);
     id=toile_status["toile_id"];
     data="["+data+[","+id+"]"];
-    console.log(data);
+    //console.log(data);
 
     // // Sending data with the request
     xhr.send(data);
