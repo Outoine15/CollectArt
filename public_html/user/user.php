@@ -36,17 +36,26 @@ if (!$_SESSION["user"]) {
     echo "id: ";
     echo $user_id+"</p>";
 
+    ?>
+    </h1>
+    <div class="page_user">
+        <div class='user_section'>
+            <h2>Fin de session</h2>
+            <a href="../index.php?action=disconnect">
+            <button class='bouton_deconnexion'>Déconnexion</button>
+            </a>
+            <h2>Suppression du compte</h2>
+            <a
+            <?php
+            $id=$_SESSION["user"];
+            echo " href='../user/deletUser.php?action=delete&id=$id'";
             ?>
-        </h1>
-        <div class="page_user">
-            <div class='user_section'>
-                <h2>Fin de session</h2>
-                <a href="../index.php?action=disconnect">
-                    <button class='bouton_deconnexion'>Déconnexion</button>
-                </a>
-            </div>
+            >
+            <button class="bouton_delet_user">Suprimer</button>
+            </a>
         </div>
     </div>
+</div>
 
     <?php
     include("../headerfooter/footer.php");

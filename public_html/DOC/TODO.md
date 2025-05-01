@@ -3,4 +3,3 @@
     - photo profill
 - sauvegarde
     - setup un pixel data edited (uniquement les modifiaction de la session sont dedans, le reste est vide (pas base color car sinon on peut pas mettre de cette couleur dans le tableau))
-- choisir entre avoir l'admin qui peut edit les toiles de tout le monde ou si il peut juste les supprimer

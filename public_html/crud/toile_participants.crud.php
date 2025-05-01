@@ -47,6 +47,14 @@ function delete_toile_participants($conn, $id)
 	return $ret;
 }
 
+function delete_toile_participants_user($conn, $id_toile, $id_user){
+	$sql="DELETE FROM `toile_participants` WHERE `id_toile`=$id_toile and `id_user`=$id_user";
+	global $debug;
+	if($debug){echo $sql;} 
+	$ret=mysqli_query($conn, $sql);
+	return $ret; 
+}
+
 /*
 	S: selectionne tous les toile_participantss
 */
@@ -67,6 +75,21 @@ function select_toile_participants_toile($conn,$toile_id){
 	if($debeug) echo $sql; 
 	$res=mysqli_query($conn, $sql); 
 	return rs_to_tab_toile_participants($res);
+}
+
+function is_user_already_participant($conn, $id_toile, $id_user){
+	$sql="SELECT * FROM `toile_participants` WHERE `id_toile`=$id_toile AND `id_user`=$id_user";
+	global $debug;
+	if($debug){echo $sql;}
+	$res = mysqli_query($conn, $sql);
+	$tab = rs_to_tab_toile_participants($res);
+
+	$existe = false;
+	if($tab != []){
+		$existe = true;
+	}
+	
+	return $existe;
 }
 
 

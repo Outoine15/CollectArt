@@ -10,14 +10,14 @@ include("../crud/admin.crud.php");
 include("../DBconnect/db_connect.php");
 
 
-if (isset($_POST["login"]) && isset($_POST["passwd"])) {
-	$session_data = get_admin_account($conn, $_POST["login"], $_POST["passwd"]);
-	print_r($session_data);
-	$id = $session_data["id"];
-	if ($$session_data == []) {
-		echo "hello there";
-		$_SESSION["admin_id"] = $id;
-		header("Location: index.php");
+if(isset($_POST["login"]) && isset($_POST["passwd"])){
+	$session_data = get_admin_account($conn, $_POST["login"] , $_POST["passwd"]);
+    print_r($session_data);
+    $id = $session_data["id"];
+	if($$session_data==[]){
+        echo "hello there";
+        $_SESSION["admin_id"]=$id;
+        header("Location: index.php?action=toiles");
 	}
 }
 ?>

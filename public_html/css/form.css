@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     padding: 20px;
+	background-image:url("../images/background_form.jpg");
 }
 
 /* 
@@ -128,7 +129,17 @@ GESTION DES INPUTS
 }
 
 #formulaire input[type="text"],
-#formulaire input[type="password"] {
+#formulaire input[type="password"],
+#formulaire input[type="number"],
+.form_section input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+#form_textarea {
     width: 100%;
     padding: 10px;
     border: 1px solid #ddd;

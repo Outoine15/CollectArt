@@ -38,7 +38,7 @@ TOILE : Informations
 ==========================
 */
 
-#infos-container{
+#infos-container, #param-container{
     max-width: 800px;
     margin: 0 auto;
     border-radius: 10px;
@@ -46,7 +46,7 @@ TOILE : Informations
     padding: 25px;
 }
 
-#infos-container h1{
+#infos-container h1, #param-container h1{
     color: #1550bd;
     font-size: 2.2em;
     margin-bottom: 25px;
@@ -104,4 +104,151 @@ TOILE : Informations
     border-radius: 5px;
     margin-bottom: 10px;
     font-size: 0.95em;
+}
+
+/* 
+==========================
+TOILE : Paramètres
+==========================
+*/
+
+.form-param{
+    margin: 25px 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+}
+
+.param-div{
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.param-div:last-child {
+    border-bottom: none;
+}
+
+.param-title{
+    color: #1550bd;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.input-nom-toile, .input-desc-toile, .add-participant-input, .dim-input {
+    width: 98%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1.1em;
+    transition: border-color 0.3s;
+}
+
+.submit1-form-param, .submit2-form-param {
+    background-color: #1550bd;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    display: block;
+    margin: 20px auto 0;
+    font-weight: 700;
+}
+
+.submit1-form-param:hover, .submit2-form-param:hover {
+    background-color: #2020ff;
+    transform: scale(1.05);
+}
+
+#hauteur-container p, #largeur-container p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    color: #444;
+    font-weight: 500;
+}
+
+.param-dim-container{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+#hauteur-container, #largeur-container {
+    flex: 1;
+}
+
+#current-participants h4, .add-participant-div h4 {
+    color: #1550bd;
+    font-size: 1.3em;
+    margin: 15px 0;
+}
+
+.param-participant{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #dce5f8;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.participant-name{
+    color: #1550bd;
+    font-size: 1.1em;
+    margin: 0;
+}
+
+.remove-participant{
+    color: #e74c3c;
+    text-decoration: none;
+    font-size: 0.9em;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: rgba(231, 76, 60, 0.1);
+    transition: all 0.5s ease;
+}
+
+.remove-participant:hover {
+    color: #c0392b;
+    transform: scale(0.95);
+    background-color: rgba(231, 76, 60, 0.2);
+}
+
+.add-participant-form{
+    margin-top: 15px;
+}
+
+.delete-toile-button{
+    display: block;
+    text-align: center;
+    margin: 20px auto;
+    margin-top: 60px;
+    padding: 10px 20px;
+    background-color: #e74c3c;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 1.1em;
+    transition: all 0.5s ease;
+    max-width: 150px;
+    font-weight: 700;
+}
+
+.delete-toile-button:hover {
+    background-color: #c0392b;
+    transform: scale(0.95);
+}
+
+.form-container{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-direction: column;
 }

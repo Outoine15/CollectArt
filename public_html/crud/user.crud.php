@@ -51,23 +51,35 @@ function delete_user($conn, $id)
 	S: selectionne tous les users
 */
 
-function select_user($conn)
-{
-	$sql = "SELECT * FROM `user`";
+function select_user($conn){
+	$sql="SELECT * FROM `user`"; 
 	global $debeug;
-	if ($debeug)
-		echo $sql;
-	$res = mysqli_query($conn, $sql);
+	if($debeug) echo $sql; 
+	$res=mysqli_query($conn, $sql); 
 	return rs_to_tab_user($res);
 }
 
-function select_user_by_id($conn, $id)
-{
-	$sql = "SELECT * FROM `user` WHERE `id`=$id";
+function select_user_no_pwd($conn){
+	$sql="SELECT user.id, user.name FROM `user`"; 
+	global $debeug;
+	if($debeug) echo $sql; 
+	$res=mysqli_query($conn, $sql); 
+	return rs_to_tab_user($res);
+}
+
+function select_user_by_id($conn, $id){
+	$sql="SELECT * FROM `user` WHERE `id`=$id";
 	global $debug;
-	if ($debug) {
-		echo $sql;
-	}
+	if($debug){echo $sql;}
+	$res = mysqli_query($conn, $sql);
+	$tab = rs_to_tab_user($res);
+	return $tab[0];
+}
+
+function select_user_by_name($conn, $name){
+	$sql="SELECT * FROM `user` WHERE `name`='$name'";
+	global $debug;
+	if($debug){echo $sql;}
 	$res = mysqli_query($conn, $sql);
 	$tab = rs_to_tab_user($res);
 	return $tab[0];
