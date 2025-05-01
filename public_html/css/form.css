@@ -127,7 +127,7 @@ GESTION DES INPUTS
     transform: scale(0.99);
 }
 
-#formulaire input[type="text"], #formulaire input[type="password"]{
+#formulaire input[type="text"], #formulaire input[type="password"], #formulaire input[type="number"], .form_section input[type="number"]{
     width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
