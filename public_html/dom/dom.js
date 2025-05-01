@@ -59,7 +59,17 @@ function createToileInformations(){
     container.appendChild(infosContainer);
 }
 
-function createUserInformations(){
+
+function createToileParametres(error){
+    var container = document.querySelector("#container");
+
+    var infosContainer = createParametresContainer(error);
+
+    container.appendChild(infosContainer);
+}
+
+// pour supprimer les utilisateur dans la page admin
+function displayUsers(){
     var container = document.querySelector("#container");
 
     for (const i in listUsers) {
@@ -69,7 +79,6 @@ function createUserInformations(){
 
     container.appendChild(infosContainer);
 }
-
 
 // ============================
 // 2. SOUS FONCTIONS
@@ -300,7 +309,7 @@ function createInfosContainer(){
 
     divDesc.appendChild(descTitle);
     divDesc.appendChild(desc);
-    
+
     infosContainer.appendChild(divDesc);
 
     // Participants
@@ -340,9 +349,269 @@ function createInfosContainer(){
     return infosContainer;
 }
 
+// Crée le conteneur des paramètres de la toile
+function createParametresContainer(error){
+    var paramContainer = document.createElement("div");
+    paramContainer.id = "param-container";
+
+    var id = toile_informations["id"];
+    var name = toile_informations["name"];
+    var hauteur = toile_informations["hauteur"];
+    var largeur = toile_informations["largeur"];
+    var description = toile_informations["description"];
+    var participants = toile_informations["participants"];
+
+    // Titre du conteneur
+    var h1 = document.createElement("h1");
+    h1.innerHTML = "Paramètres de la toile";
+    paramContainer.appendChild(h1);
+
+    if(error != ""){
+        paramContainer.innerHTML += error;
+    }
+        
+    // Formulaire
+    var form = document.createElement("form");
+    form.action = "toile_edit.php?action=param&id=" + id;
+    form.method = "post";
+    form.className = "form-param";
+
+    // Partie Nom
+    var param_nom_div = paramNomDiv(name);
+    form.appendChild(param_nom_div);
+
+    // Partie Dimensions
+    var param_dimensions_div = paramDimensionsDiv(hauteur, largeur);
+    form.appendChild(param_dimensions_div);
+
+    // Partie Description
+    var param_desc_div = paramDescDiv(description);
+    form.appendChild(param_desc_div);
+
+    var submit1 = document.createElement("input");
+    submit1.type = "submit";
+    submit1.value = "Enregistrer";
+    submit1.className = "submit1-form-param";
+    submit1.name = "editParam";
+
+    form.appendChild(submit1);
+    paramContainer.appendChild(form);
+
+    // FORM 2 : Partie Participants
+    var form2 = document.createElement("form");
+    form2.action = "toile_edit.php?action=param&id=" + id;
+    form2.method = "post";
+    form2.className = "form-param";
+    
+    var param_participants_div = paramParticipantsDiv(participants);
+    form2.appendChild(param_participants_div);
+
+    var submit2 = document.createElement("input");
+    submit2.type = "submit";
+    submit2.value = "Ajouter";
+    submit2.className = "submit2-form-param";
+    submit2.name = "editParam";
+
+    form2.appendChild(submit2);
+
+    paramContainer.appendChild(form2);
+
+    var delete_toile = document.createElement("a");
+    delete_toile.className = "delete-toile-button";
+    delete_toile.href = "../dom/json.delete.php?action=from_user&id=" + id;
+    delete_toile.innerHTML = "Supprimer la toile";
+    
+    paramContainer.appendChild(delete_toile);
+    
+    return paramContainer;
+}
+
 // ============================ 
 // 3. FONCTIONS UTILITAIRES
 // ============================
+
+// Crée la partie participants de la toile dans paramètres
+function paramParticipantsDiv(participants){
+    var div = document.createElement("div");
+    div.className = "param-div";
+    
+    var title = document.createElement("h3");
+    title.innerHTML = "Gestion des participants";
+    div.appendChild(title);
+    
+    var currentParticipants = document.createElement("div");
+    currentParticipants.id = "current-participants";
+    
+    var participantsTitle = document.createElement("h4");
+    participantsTitle.innerHTML = "Participants actuels";
+    currentParticipants.appendChild(participantsTitle);
+    
+    var participantsList = document.createElement("div");
+    participantsList.className = "participants-list";
+    
+    if(participants.length > 0){
+        for(let i in participants){
+            let user = participants[i];
+            let username = user["name"];
+            let userId = user["id"];
+            
+            let participantDiv = document.createElement("div");
+            participantDiv.className = "param-participant";
+            
+            let p = document.createElement("p");
+            p.innerHTML = username;
+            p.className = "participant-name";
+            
+            let removeBtn = document.createElement("a");
+            removeBtn.className = "remove-participant";
+            removeBtn.innerHTML = "Supprimer";
+            removeBtn.href = "toile_edit.php?action=param&id=" + toile_informations["id"] + "&remove=" + userId;
+            
+            participantDiv.appendChild(p);
+            participantDiv.appendChild(removeBtn);
+            participantsList.appendChild(participantDiv);
+        }
+    }else{
+        let noParticipants = document.createElement("p");
+        noParticipants.className = "noparticipants";
+        noParticipants.innerHTML = "Il n'y a pas de participants supplémentaire à cette toile";
+        participantsList.appendChild(noParticipants);
+    }
+    
+    currentParticipants.appendChild(participantsList);
+    div.appendChild(currentParticipants);
+    
+    // Ajout participant
+    var addDiv = document.createElement("div");
+    addDiv.className = "add-participant-div";
+    
+    var addTitle = document.createElement("h4");
+    addTitle.innerHTML = "Ajouter un participant";
+    addDiv.appendChild(addTitle);
+    
+    var addForm = document.createElement("div");
+    addForm.className = "add-participant-form";
+    
+    var addInput = document.createElement("input");
+    addInput.type = "text";
+    addInput.name = "add-participant";
+    addInput.placeholder = "Nom d'utilisateur";
+    addInput.className = "add-participant-input";
+    addInput.minLength = "1";
+    addInput.maxLength = "16";
+
+    addForm.appendChild(addInput);
+    addDiv.appendChild(addForm);
+    
+    div.appendChild(addDiv);
+    return div;
+
+}
+
+// Crée la partie description de la toile dans paramètres
+function paramDescDiv(description) {
+    var div = document.createElement("div");
+    div.className = "param-div";
+
+    var title = document.createElement("h2");
+    title.className = "param-title";
+    title.innerHTML = "Description";
+
+    var input = document.createElement("input");
+    input.type = "text";
+    input.minLength = 1;
+    input.maxLength = 200;
+    input.className = "input-desc-toile";
+    input.name = "description";
+    input.value = description;
+
+    div.appendChild(title);
+    div.appendChild(input);
+    return div;
+}
+
+// Crée la partie dimensions de la toile dans paramètres
+function paramDimensionsDiv(hauteur, largeur){
+    var div = document.createElement("div");
+    div.className = "param-div";
+
+    var title = document.createElement("h2");
+    title.className = "param-title";
+    title.innerHTML = "Dimensions";
+
+    var dimContainer = document.createElement("div");
+    dimContainer.className = "param-dim-container";
+
+    // Hauteur
+    var hauteurContainer = document.createElement("div");
+    hauteurContainer.id = "hauteur-container";
+
+    var hauteurP = document.createElement("p");
+    hauteurP.innerHTML = "Hauteur :";
+
+    var hauteurInput = document.createElement("input");
+    hauteurInput.type = "number";
+    hauteurInput.min = "1";
+    hauteurInput.max = "100";
+    hauteurInput.value = hauteur;
+    hauteurInput.name = "hauteur";
+    hauteurInput.className = "dim-input";
+
+    // Désactivé en attendant un fix de l'ajustement des miniatures après modification des dimensions
+    hauteurInput.readOnly = true;
+
+    hauteurContainer.appendChild(hauteurP);
+    hauteurContainer.appendChild(hauteurInput);
+    dimContainer.appendChild(hauteurContainer);
+    
+    // Largeur
+    var largeurContainer = document.createElement("div");
+    largeurContainer.id = "largeur-container";
+
+    var largeurP = document.createElement("p");
+    largeurP.innerHTML = "Largeur :";
+
+    var largeurInput = document.createElement("input");
+    largeurInput.type = "number";
+    largeurInput.min = "1";
+    largeurInput.max = "100";
+    largeurInput.value = largeur;
+    largeurInput.name = "largeur";
+    largeurInput.className = "dim-input";
+
+    // Désactivé en attendant un fix de l'ajustement des miniatures après modification des dimensions
+    largeurInput.readOnly = true;
+
+    largeurContainer.appendChild(largeurP);
+    largeurContainer.appendChild(largeurInput);
+    dimContainer.appendChild(largeurContainer);
+
+    div.appendChild(title);
+    div.appendChild(dimContainer);
+    return div;
+}
+
+// Crée la partie nom de la toile dans paramètres
+function paramNomDiv(name){
+    var div = document.createElement("div");
+    div.className = "param-div";
+
+    var title = document.createElement("h2");
+    title.className = "param-title";
+    title.innerHTML = "Nom de la toile";
+
+    var input = document.createElement("input");
+    input.type = "text";
+    input.minLength = 1;
+    input.maxLength = 16;
+    input.className = "input-nom-toile";
+    input.name = "nom";
+    input.value = name;
+
+    div.appendChild(title);
+    div.appendChild(input);
+    return div;
+}
 
 // Rajoute une couleur dans le tableau pixelData de const toileStatus
 function fill_pixel_data(i, j, color){

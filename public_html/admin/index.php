@@ -14,6 +14,7 @@ include("../DBconnect/db_connect.php");
     <script src="../dom/script.js"></script>
     <link rel="stylesheet" href="../css/default.admin.css">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/page_toile.css">
     <title>page admin</title>
 </head>
 <body>
@@ -22,6 +23,7 @@ include("../DBconnect/db_connect.php");
 include("../DBconnect/db_connect.php");
 include("../headerfooter/header.php");
 include("../crud/toile.crud.php");
+include("../crud/user.crud.php");
 ?>
 
 <div id="container">
@@ -30,13 +32,47 @@ include("../crud/toile.crud.php");
 </div>
 
 <?php
-$toiles=select_toiles($conn);
-$toiles=json_encode($toiles);
-// print_r($toiles);
-echo "<script>";
-echo "var listToiles = ${toiles};\n";
-echo "displayToiles('supprimer')";
-echo "</script>";
+if(isset($_GET["action"])){
+    $action=$_GET["action"];
+
+    $url_toiles="index.php?action=toiles";
+    $url_users="index.php?action=users";
+
+
+    if($action=="toiles"){
+
+        echo "<div id='div_toile_nav'>\n
+        <a href='$url_toiles' class='nav_toile active'>Toiles</a>\n
+        <a href='$url_users' class='nav_toile'>Utilisateurs</a>\n
+        </div>\n";
+
+        $toiles=select_toiles($conn);
+        $toiles=json_encode($toiles);
+        echo "<script>";
+        echo "var listToiles = ${toiles};\n";
+        echo "displayToiles('supprimer')";
+        echo "</script>";
+    }
+
+    if($action=="users"){
+
+        echo "<div id='div_toile_nav'>\n
+        <a href='$url_toiles' class='nav_toile'>Toiles</a>\n
+        <a href='$url_users' class='nav_toile active'>Utilisateurs</a>\n
+        </div>\n";
+
+        $users=select_user_no_pwd($conn);
+        $users_cleaned=[];
+        for ($i=0; $i < count($users); $i++) { 
+            array_push($users_cleaned,);
+        }
+        $users=json_encode($users);
+        echo "<script>";
+        echo "var listUsers = ${users};\n";
+        echo "displayUsers();\n";
+        echo "</script>;\n";
+    }
+}
 
 include("../headerfooter/footer.php");
 

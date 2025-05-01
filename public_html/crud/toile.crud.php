@@ -45,6 +45,14 @@ function delete_toile($conn, $id){
 	return $ret; 
 }
 
+function delete_toile_creator($conn, $id_creator){
+	$sql="DELETE FROM `toile` WHERE `id_creator`=$id_creator";
+	global $debug;
+	if($debug){echo $sql;} 
+	$ret=mysqli_query($conn, $sql);
+	return $ret;
+}
+
 /*
 	S: selectionne tous les toiles
 */

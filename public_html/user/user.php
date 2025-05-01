@@ -42,6 +42,15 @@ include("../headerfooter/header.php");
             <a href="../index.php?action=disconnect">
             <button class='bouton_deconnexion'>Déconnexion</button>
             </a>
+            <h2>Suppression du compte</h2>
+            <a
+            <?php
+            $id=$_SESSION["user"];
+            echo " href='../user/deletUser.php?action=delete&id=$id'";
+            ?>
+            >
+            <button class="bouton_delet_user">Suprimer</button>
+            </a>
         </div>
     </div>
 </div>

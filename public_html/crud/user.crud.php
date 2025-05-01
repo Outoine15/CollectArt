@@ -50,6 +50,14 @@ function select_user($conn){
 	return rs_to_tab_user($res);
 }
 
+function select_user_no_pwd($conn){
+	$sql="SELECT user.id, user.name FROM `user`"; 
+	global $debeug;
+	if($debeug) echo $sql; 
+	$res=mysqli_query($conn, $sql); 
+	return rs_to_tab_user($res);
+}
+
 function select_user_by_id($conn, $id){
 	$sql="SELECT * FROM `user` WHERE `id`=$id";
 	global $debug;

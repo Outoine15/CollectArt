@@ -17,7 +17,7 @@ if(isset($_POST["login"]) && isset($_POST["passwd"])){
 	if($$session_data==[]){
         echo "hello there";
         $_SESSION["admin_id"]=$id;
-        header("Location: index.php");
+        header("Location: index.php?action=toiles");
 	}
 }
 ?>
