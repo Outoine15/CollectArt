@@ -122,3 +122,9 @@ textarea{
     margin-bottom: 10px;
     font-size: 0.95em;
 }
+
+.container-message{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
