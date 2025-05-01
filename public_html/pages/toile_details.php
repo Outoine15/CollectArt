@@ -2,6 +2,7 @@
 include("../DBconnect/db_connect.php");
 include("../crud/toile.crud.php");
 include("../crud/toile_participants.crud.php");
+include("../crud/toile_demandes.crud.php");
 include("../crud/user.crud.php");
 
 $message = "";
@@ -9,7 +10,25 @@ $message = "";
 session_start();
 if(isset($_POST["demandeParticiper"])){
     if(isset($_SESSION["user"])){
-        $message = "<p class='success_message'>Demande effectuée avec succès !</p>";
+        $user_id = $_SESSION["user"];
+        $toile_id = $_GET["id"];
+
+        $toile = select_toile($conn, $toile_id);
+        $toile_creator = $toile["id_creator"];
+        $toile_name = $toile["name"];
+
+        if(is_user_already_participant($conn, $toile_id, $user_id) || $toile_creator == $user_id){
+            $message = "<p class='error_message'><strong>Erreur :</strong> Vous participez déjà à la toile " . $toile_name . "</p>";
+        }else {
+            if(is_user_already_demande($conn, $toile_id, $user_id)){
+                $message = "<p class='error_message'><strong>Erreur :</strong> Vous avez déjà effectué une demande pour participer à la toile " . $toile_name . "</p>";
+            }else {
+                insert_toile_demandes($conn, $toile_id, $user_id);
+                $message = "<p class='success_message'>Demande effectuée avec succès !</p>";
+            }
+        }
+
+
     }else {
         header("Location: ../user/connUser.php?erreur_page=toile_details");
     }

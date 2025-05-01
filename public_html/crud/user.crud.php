@@ -86,6 +86,16 @@ function select_user_participants_toile($conn, $id_toile){
 	return rs_to_tab_user($res);
 }
 
+function select_user_demandes_toile($conn, $id_toile){
+	$sql = "SELECT DISTINCT user.id, user.name FROM `user`
+			JOIN `toile_demandes` ON user.id = toile_demandes.id_user
+			WHERE toile_demandes.id_toile = $id_toile";
+	global $debeug;
+	if($debeug) echo $sql; 
+	$res=mysqli_query($conn, $sql); 
+	return rs_to_tab_user($res);
+}
+
 /**
  * Fonction auxiliaire pour transformer un rs en tableau
  */

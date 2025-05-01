@@ -242,7 +242,7 @@ function createUserInfosContainer(user){
     var name = user["name"];
     var id = user["id"];
 
-    var h1 = document.createElement("h1");
+    var h1 = document.createElement("h2");
     h1.innerHTML = name;
     infosContainer.appendChild(h1);
 
