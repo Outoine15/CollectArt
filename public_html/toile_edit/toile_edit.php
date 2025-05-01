@@ -7,6 +7,7 @@ if(!isset($_SESSION["user"]) && !isset($_SESSION["admin_id"])){
 include("../DBconnect/db_connect.php");
 include("../crud/toile.crud.php");
 include("../crud/toile_participants.crud.php");
+include("../crud/toile_demandes.crud.php");
 include("../crud/user.crud.php");
 
 $member=false;
@@ -71,6 +72,7 @@ if(isset($_POST["editParam"])){
                     if(is_user_already_participant($conn, $_GET["id"], $user_add_id)){
                         $message = "<p class='error_message'><strong>Erreur :</strong> " . $username . " participe déjà à cette toile</p>";
                     }else {
+                        delete_toile_demandes_user($conn, $_GET["id"], $user_add_id);
                         insert_toile_participants($conn, $_GET["id"], $user_add_id);
                         $message = "<p class='success_message'><strong>L'utilisateur " . $username . " a été ajouté avec succès !</p>";
                     }
@@ -236,7 +238,13 @@ if(isset($_GET["action"]) && isset($_GET["id"])){
             </div>\n 
             ";
         }else{
-            
+            $demandes = select_user_demandes_toile($conn, $id);
+
+            echo "
+            <script>
+            var demandes = " . json_encode($demandes) . ";
+            </script>
+            ";
         }
     }
 
