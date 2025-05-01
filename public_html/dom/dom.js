@@ -59,6 +59,17 @@ function createToileInformations(){
     container.appendChild(infosContainer);
 }
 
+function createUserInformations(){
+    var container = document.querySelector("#container");
+
+    for (const i in listUsers) {
+        user = listUsers[i];
+        var infosContainer = createUserInfosContainer(user);
+    }
+
+    container.appendChild(infosContainer);
+}
+
 
 // ============================
 // 2. SOUS FONCTIONS
@@ -215,6 +226,34 @@ function setupEventListeners(){
     document.querySelector("#button_save_toile").addEventListener("click", send_json_data_for_save);
     
 }
+
+function createUserInfosContainer(user){
+    var infosContainer = document.createElement("div");
+    infosContainer.id = "infos-container";
+
+    var name = user["name"];
+    var id = user["id"];
+
+    var h1 = document.createElement("h1");
+    h1.innerHTML = name;
+    infosContainer.appendChild(h1);
+
+    var divInfos = document.createElement("div");
+    divInfos.className = "infos-div";
+    divInfos.innerHTML = id;
+    
+    var deleteBtn = document.createElement("a");
+    deleteBtn.href = "../dom/json.delete.php?action=from_admin&id="+id;
+    deleteBtn.className = "";
+    deleteBtn.innerHTML = "Supprimer";
+    
+    infosContainer.appendChild(divInfos);
+    infosContainer.appendChild(deleteBtn);
+    
+    return infosContainer;
+
+}
+
 
 // Crée le conteneur des informations de la toile
 function createInfosContainer(){
