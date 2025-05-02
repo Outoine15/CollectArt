@@ -41,7 +41,7 @@ include("../headerfooter/header.php");
 	<input type="text" name="login">
 	<p>Mot de passe</p>
 	
-	<div><input type="text" name="passwd">
+	<div><input type="password" name="passwd">
 		<input type="submit"></div>
 	</form>
 	<!-- <a href="creeUser.php">Créer un compte</a> -->
